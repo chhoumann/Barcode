@@ -1,0 +1,13 @@
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Barcode.exe
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Barcode.deps.json
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Barcode.runtimeconfig.json
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Barcode.runtimeconfig.dev.json
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Barcode.dll
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Barcode.pdb
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.csprojAssemblyReference.cache
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.AssemblyInfoInputs.cache
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.AssemblyInfo.cs
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.csproj.CoreCompileInputs.cache
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.dll
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.pdb
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.genruntimeconfig.cache
