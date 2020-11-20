@@ -78,8 +78,7 @@ namespace Barcode.User
 
         public int CompareTo(object? obj)
         {
-            if (obj is User otherUser) return Id.CompareTo(otherUser.Id);
-            return 1;
+            return obj is User otherUser ? Id.CompareTo(otherUser.Id) : 1;
         }
     }
 }

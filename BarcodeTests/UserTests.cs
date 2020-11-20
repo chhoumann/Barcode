@@ -101,6 +101,33 @@ namespace BarcodeTests
 
             Assert.Throws<InvalidUsernameException>(setUsername, $"Got: {user.Username}");
         }
-        
+
+        [TestCase("")]
+        public void FirstName_SetFirstNameToEmptyString_Fails(string firstName)
+        {
+            User user = Substitute.For<User>(userArgs);
+
+            TestDelegate setFirstName = () => user.FirstName = firstName;
+
+            Assert.Throws<ArgumentException>(setFirstName);
+        }
+
+        [TestCase("")]
+        public void LastName_SetLastNameToEmptyString_Fails(string lastName)
+        {
+             User user = Substitute.For<User>(userArgs);
+ 
+             TestDelegate setLastName = () => user.LastName = lastName;
+ 
+             Assert.Throws<ArgumentException>(setLastName);
+        }
+
+        [Test]
+        public void ToString_CallToStringOnUser_ReturnsString()
+        {
+            User user = Substitute.For<User>(userArgs);
+            
+            Assert.That(user.ToString(), Is.TypeOf<String>());
+        }
     }
 }

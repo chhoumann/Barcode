@@ -61,5 +61,50 @@ namespace BarcodeTests
             
             Assert.That(transaction.Undone, Is.True);
         }
+
+        [Test]
+        public void BuyTransaction_CallToString_ReturnsString()
+        {
+            const decimal amount = 10;
+            Product product = Substitute.For<Product>("Milk", amount);
+            User user = Substitute.For<User>(userArgs);
+    
+            var transaction = new BuyTransaction(user, product);
+            
+            Assert.That(transaction.ToString(), Is.TypeOf<String>());
+        }
+
+        [Test]
+        public void InsertCashTransaction_InsertCash_Succeeds()
+        {
+            User user = Substitute.For<User>(userArgs);
+
+            var transaction = new InsertCashTransaction(user, 50m);
+            transaction.Execute();
+            
+            Assert.That(transaction.Succeeded, Is.True);
+        }
+
+        [Test]
+        public void InsertCashTransaction_UndoInsertCash_Succeeds()
+        {
+            User user = Substitute.For<User>(userArgs);
+            
+            var transaction = new InsertCashTransaction(user, 50m);
+            transaction.Execute();
+            transaction.Undo();
+            
+            Assert.That(transaction.Undone, Is.True);
+        }
+
+        [Test]
+        public void InsertCashTransaction_CallToString_ReturnsString()
+        {
+            User user = Substitute.For<User>(userArgs);
+                        
+            var transaction = new InsertCashTransaction(user, 50m);
+            
+            Assert.That(transaction.ToString(), Is.TypeOf<String>());
+        }
     }
 }

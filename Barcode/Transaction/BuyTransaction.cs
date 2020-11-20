@@ -2,7 +2,7 @@
 
 namespace Barcode.Transaction
 {
-    public class BuyTransaction : Transaction
+    public class BuyTransaction : Transaction, ICommand
     {
         public Product.Product Product { get; }
         
@@ -11,7 +11,7 @@ namespace Barcode.Transaction
             Product = product;
         }
 
-        public override void Execute()
+        public void Execute()
         {
             if (Product.CanBeBoughtOnCredit || User.Balance >= Amount)
             {
@@ -26,11 +26,13 @@ namespace Barcode.Transaction
             }
         }
 
-        public override void Undo()
+        public void Undo()
         {
-            if (!Succeeded) return;
-            User.Balance += Amount;
-            Undone = true;
+            if (Succeeded)
+            {
+                User.Balance += Amount;
+                Undone = true;
+            }
         }
         
         public override string ToString() => Undone ? "" : $"{Date.Day} - #{Id} | {User.FirstName} Purchase {Product.Name} for {Amount}.";
