@@ -1,12 +1,12 @@
 ﻿using Barcode.Exceptions;
 
-namespace Barcode.Transaction
+namespace Barcode
 {
     public class BuyTransaction : Transaction, ICommand
     {
-        public Product.Product Product { get; }
+        public Product Product { get; }
         
-        public BuyTransaction(User.User user, Product.Product product) : base(user, product.Price)
+        public BuyTransaction(User user, Product product) : base(user, product.Price)
         {
             Product = product;
         }

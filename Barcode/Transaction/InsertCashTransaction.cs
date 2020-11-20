@@ -1,8 +1,8 @@
-﻿namespace Barcode.Transaction
+﻿namespace Barcode
 {
     public class InsertCashTransaction : Transaction, ICommand
     {
-        public InsertCashTransaction(User.User user, decimal amount) : base(user, amount) { }
+        public InsertCashTransaction(User user, decimal amount) : base(user, amount) { }
 
         public void Execute()
         {

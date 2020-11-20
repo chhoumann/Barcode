@@ -1,8 +1,6 @@
 ﻿using System;
 using Barcode.Exceptions;
-using Barcode.Product;
-using Barcode.Transaction;
-using Barcode.User;
+using Barcode;
 using NSubstitute;
 using NUnit.Framework;
 

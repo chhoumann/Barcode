@@ -15,6 +15,10 @@
     <e p="D:\Mapper\Tools\Dev\Projects\Barcode" t="IncludeFlat">
       <e p="Barcode" t="IncludeRecursive">
         <e p="Barcode.csproj" t="IncludeRecursive" />
+        <e p="Barcode.csproj.DotSettings" t="Include" />
+        <e p="BarcodeSystem" t="Include">
+          <e p="BarcodeSystem.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Exceptions" t="Include">
           <e p="InsufficientCreditsException.cs" t="Include" />
@@ -55,8 +59,14 @@
             </e>
           </e>
         </e>
+        <e p="ProductTests" t="Include">
+          <e p="ProductTests.cs" t="Include" />
+          <e p="SeasonalProductTests.cs" t="Include" />
+        </e>
         <e p="TransactionTests.cs" t="Include" />
-        <e p="UserTests.cs" t="Include" />
+        <e p="UserTests" t="Include">
+          <e p="UserTests.cs" t="Include" />
+        </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>

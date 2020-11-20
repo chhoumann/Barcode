@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Barcode.Exceptions;
 
-namespace Barcode.User
+namespace Barcode
 {
     public class Email
     {

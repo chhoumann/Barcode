@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Barcode.Exceptions;
 
-namespace Barcode.User
+namespace Barcode
 {
     public class User : IComparable
     {

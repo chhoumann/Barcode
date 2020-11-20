@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Barcode.Transaction
+namespace Barcode
 {
     public abstract class Transaction 
     {
@@ -12,13 +12,13 @@ namespace Barcode.Transaction
             get => _id;
         }
 
-        public User.User User { get; set; }
+        public User User { get; set; }
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public bool Succeeded { get; protected set; }
         public bool Undone { get; protected set; }
 
-        public Transaction(User.User user, decimal amount)
+        public Transaction(User user, decimal amount)
         {
             User = user;
             Amount = amount;

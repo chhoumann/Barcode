@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Barcode.Exceptions;
-using Barcode.User;
-using NUnit.Framework;
+using Barcode;
 using NSubstitute;
+using NUnit.Framework;
 
-namespace BarcodeTests
+namespace BarcodeTests.UserTests
 {
     public class UserTests
     {
