@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Barcode;
+using Barcode.Exceptions;
+using Barcode.User;
 using NUnit.Framework;
 using NSubstitute;
 
@@ -8,20 +9,27 @@ namespace BarcodeTests
 {
     public class UserTests
     {
+        private object[] userArgs;
+
         [SetUp]
-        public void Setup()
+        public void SetUp()
         {
+           userArgs = new object[]
+           {
+              "Christian", "Houmann", "chbh", "christian@bagerbach.com" 
+           };
         }
+        
 
         [Test]
         public void Constructor_CreateUser_IdIncrementsOnCreate()
         {
-            User user1 = Substitute.For<User>();
-            User user2 = Substitute.For<User>();
+            User user1 = Substitute.For<User>(userArgs);
+            User user2 = Substitute.For<User>(userArgs);
 
             bool newestUserHasGreatestId = user1.Id < user2.Id; 
             
-            Assert.That(newestUserHasGreatestId);
+            Assert.That(newestUserHasGreatestId, Is.True);
         }
 
         [Test]
@@ -29,26 +37,24 @@ namespace BarcodeTests
         {
             List<User> userList = new List<User>()
             {
-                Substitute.For<User>(),
-                Substitute.For<User>(),
-                Substitute.For<User>()
+                Substitute.For<User>(userArgs),
+                Substitute.For<User>(userArgs),
+                Substitute.For<User>(userArgs)
             };
 
             userList.Sort();
-            bool userListIsSortedById = (userList[0].Id == 0 && userList[1].Id == 1 && userList[2].Id == 2);
             
-            Assert.That(userListIsSortedById);
+            Assert.That(userList, Is.Ordered);
         }
 
-        [Test]
         [TestCase("eksempel@domain.dk")]
         [TestCase("eksempel@mit-domain.dk")]
         public void EmailAddress_SetEmail_AcceptsCorrectlyFormattedEmailAddress(string email)
         {
-            User user = Substitute.For<User>();
+            User user = Substitute.For<User>(userArgs);
             user.Email= email;
             
-            Assert.That(user.Email == email);
+            Assert.That(user.Email, Is.EqualTo(email));
         }
 
         [TestCase("eksempel(2)@-mit_domain.dk")]
@@ -64,7 +70,7 @@ namespace BarcodeTests
         [TestCase("word")]
         public void EmailAddress_SetEmail_RejectsInvalidEmailAddress(string email)
         {
-            User user = Substitute.For<User>();
+            User user = Substitute.For<User>(userArgs);
 
             TestDelegate setUserEmail = () => user.Email = email;
             
@@ -74,7 +80,7 @@ namespace BarcodeTests
         [TestCase("christian")]
         public void Username_SetUsername_AcceptsCorrectlyFormattedUsername(string username)
         {
-            User user = Substitute.For<User>();
+            User user = Substitute.For<User>(userArgs);
 
             user.Username = username;
 
@@ -89,7 +95,7 @@ namespace BarcodeTests
         [TestCase("Christian")]
         public void Username_SetUsername_RejectsIllegalUsername(string username)
         {
-            User user = Substitute.For<User>();
+            User user = Substitute.For<User>(userArgs);
             
             TestDelegate setUsername = () => user.Username = username;
 

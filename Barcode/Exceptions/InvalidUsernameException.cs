@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Barcode
+namespace Barcode.Exceptions
 {
     public class InvalidUsernameException : Exception
     {

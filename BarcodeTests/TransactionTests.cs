@@ -1,0 +1,65 @@
+﻿using System;
+using Barcode.Exceptions;
+using Barcode.Product;
+using Barcode.Transaction;
+using Barcode.User;
+using NSubstitute;
+using NUnit.Framework;
+
+namespace BarcodeTests
+{
+    [TestFixture]
+    public class TransactionTests
+    {
+        private object[] userArgs;
+        
+        [SetUp]
+        public void SetUp()
+        {
+            userArgs = new object[]
+            {
+                "Christian", "Houmann", "chbh", "christian@bagerbach.com" 
+            };
+        }
+        
+        [TestCase(10)]
+        public void BuyTransaction_BuyProductWithSufficientCredits_Success(decimal productPrice)
+        {
+            Product product = Substitute.For<Product>("Milk", productPrice);
+            User user = Substitute.For<User>(userArgs);
+            user.Balance = productPrice;
+            
+            var transaction = new BuyTransaction(user, product);
+            transaction.Execute();
+            
+            Assert.That(transaction.Succeeded, Is.True);
+        }
+
+        [TestCase(11, 10)]
+        public void BuyTransaction_BuyProductWithInsufficientCredits_ThrowsException(decimal productPrice, decimal userBalance)
+        {
+            Product product = Substitute.For<Product>("Milk", productPrice);
+            User user = Substitute.For<User>(userArgs);
+            user.Balance = userBalance;
+
+            var transaction = new BuyTransaction(user, product);
+            
+            Assert.Throws<InsufficientCreditsException>(transaction.Execute);
+        }
+        
+        [Test]
+        public void BuyTransaction_UndoProductPurchase_Success()
+        {
+            const decimal amount = 10;
+            Product product = Substitute.For<Product>("Milk", amount);
+            User user = Substitute.For<User>(userArgs);
+            user.Balance = amount;
+
+            var transaction = new BuyTransaction(user, product);
+            transaction.Execute();
+            transaction.Undo();
+            
+            Assert.That(transaction.Undone, Is.True);
+        }
+    }
+}

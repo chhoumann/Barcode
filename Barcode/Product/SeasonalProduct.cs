@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Barcode
+namespace Barcode.Product
 {
     public class SeasonalProduct : Product
     {

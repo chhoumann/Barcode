@@ -1,4 +1,4 @@
-﻿namespace Barcode
+﻿namespace Barcode.Product
 {
     public class Product
     {

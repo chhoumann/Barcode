@@ -16,9 +16,12 @@
       <e p="Barcode" t="IncludeRecursive">
         <e p="Barcode.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Email.cs" t="Include" />
-        <e p="InvalidEmailException.cs" t="Include" />
-        <e p="InvalidUsernameException.cs" t="Include" />
+        <e p="Exceptions" t="Include">
+          <e p="InsufficientCreditsException.cs" t="Include" />
+          <e p="InvalidEmailException.cs" t="Include" />
+          <e p="InvalidUsernameException.cs" t="Include" />
+        </e>
+        <e p="ICommand.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -26,11 +29,20 @@
             </e>
           </e>
         </e>
-        <e p="Product.cs" t="Include" />
+        <e p="Product" t="Include">
+          <e p="Product.cs" t="Include" />
+          <e p="SeasonalProduct.cs" t="Include" />
+        </e>
         <e p="Program.cs" t="Include" />
-        <e p="SeasonalProduct.cs" t="Include" />
-        <e p="Transaction.cs" t="Include" />
-        <e p="User.cs" t="Include" />
+        <e p="Transaction" t="Include">
+          <e p="BuyTransaction.cs" t="Include" />
+          <e p="InsertCashTransaction.cs" t="Include" />
+          <e p="Transaction.cs" t="Include" />
+        </e>
+        <e p="User" t="Include">
+          <e p="Email.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
       </e>
       <e p="Barcode.sln" t="IncludeFlat" />
       <e p="BarcodeTests" t="IncludeRecursive">
@@ -43,6 +55,7 @@
             </e>
           </e>
         </e>
+        <e p="TransactionTests.cs" t="Include" />
         <e p="UserTests.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />

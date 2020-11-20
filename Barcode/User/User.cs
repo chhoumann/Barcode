@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Barcode.Exceptions;
 
-namespace Barcode
+namespace Barcode.User
 {
     public class User : IComparable
     {
@@ -48,7 +49,7 @@ namespace Barcode
             }
         }
 
-        public decimal Balance { get; private set; } = 0m;
+        public decimal Balance { get; set; } = 0m;
 
         public string Email
         {
@@ -56,7 +57,7 @@ namespace Barcode
             set => _email.EmailAddress = value;
         }
 
-        public User()
+        private User()
         {
             Id = userIdTracker++;
             _email = new Email();
