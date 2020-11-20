@@ -16,6 +16,7 @@
       <e p="Barcode" t="IncludeRecursive">
         <e p="Barcode.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Email.cs" t="Include" />
         <e p="InvalidEmailException.cs" t="Include" />
         <e p="InvalidUsernameException.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">

@@ -46,9 +46,9 @@ namespace BarcodeTests
         public void EmailAddress_SetEmail_AcceptsCorrectlyFormattedEmailAddress(string email)
         {
             User user = Substitute.For<User>();
-            user.EmailAddress = email;
+            user.Email= email;
             
-            Assert.That(user.EmailAddress == email);
+            Assert.That(user.Email == email);
         }
 
         [TestCase("eksempel(2)@-mit_domain.dk")]
@@ -66,9 +66,9 @@ namespace BarcodeTests
         {
             User user = Substitute.For<User>();
 
-            TestDelegate setUserEmail = () => user.EmailAddress = email;
+            TestDelegate setUserEmail = () => user.Email = email;
             
-            Assert.Throws<InvalidEmailException>(setUserEmail, $"Got: {user.EmailAddress}");
+            Assert.Throws<InvalidEmailException>(setUserEmail, $"Got: {user.Email}");
         }
 
         [TestCase("christian")]
