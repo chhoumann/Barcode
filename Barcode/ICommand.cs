@@ -4,6 +4,5 @@
     {
         void Execute();
         void Undo();
-        public bool Undone { get; }
     }
 }

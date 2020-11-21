@@ -49,7 +49,7 @@ namespace Barcode
             }
         }
 
-        public decimal Balance { get; set; } = 0m;
+        public decimal Balance { get; set; }
 
         public string Email
         {
@@ -80,5 +80,7 @@ namespace Barcode
         {
             return obj is User otherUser ? Id.CompareTo(otherUser.Id) : 1;
         }
+
+        public static event Action<User> UserBalanceNotification;
     }
 }
