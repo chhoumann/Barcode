@@ -17,7 +17,7 @@ namespace Barcode
         public decimal Amount { get; set; }
         public bool Succeeded { get; protected set; }
         public bool Undone { get; protected set; }
-        public static event Action<ITransaction> LogCommand;
+        public static event Action<Transaction> LogCommand;
 
         public Transaction(User user, decimal amount)
         {
@@ -33,12 +33,12 @@ namespace Barcode
             return "";
         }
 
-        public void Execute()
+        public virtual void Execute()
         {
             LogCommand?.Invoke(this);
         }
 
-        public void Undo()
+        public virtual void Undo()
         {
             LogCommand?.Invoke(this);
         }

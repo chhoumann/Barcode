@@ -58,6 +58,7 @@ namespace BarcodeTests
             transaction.Undo();
             
             Assert.That(transaction.Undone, Is.True);
+            Assert.That(user.Balance, Is.EqualTo(amount));
         }
 
         [Test]
@@ -87,12 +88,14 @@ namespace BarcodeTests
         public void InsertCashTransaction_UndoInsertCash_Succeeds()
         {
             User user = Substitute.For<User>(userArgs);
+            const decimal insertAmount = 50m;
             
-            var transaction = new InsertCashTransaction(user, 50m);
+            var transaction = new InsertCashTransaction(user, insertAmount);
             transaction.Execute();
             transaction.Undo();
             
             Assert.That(transaction.Undone, Is.True);
+            Assert.That(user.Balance, Is.EqualTo(0));
         }
 
         [Test]

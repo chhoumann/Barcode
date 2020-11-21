@@ -6,16 +6,16 @@ namespace Barcode
 {
     public class BarcodeSystem
     {
-        public IEnumerable<Product> Products;
-        public IEnumerable<Product> ActiveProducts;
-        public IEnumerable<Transaction> Transactions;
-        public IEnumerable<User> Users;
-        private Log _log;
+        public List<Product> Products { get; } = new List<Product>();
+        public List<Product> ActiveProducts { get; } = new List<Product>();
+        public List<Transaction> Transactions { get; } = new List<Transaction>();
+        public List<User> Users { get; }= new List<User>();
+        private ILog _log;
 
-        public BarcodeSystem()
+        public BarcodeSystem(ILog log)
         {
-            _log = new Log();
-            Transaction.LogCommand += _log.AddLog;
+            _log = log;
+            Transaction.LogCommand += _log.AddLogEntry;
         }
 
         public BuyTransaction BuyProduct(User user, Product product)
@@ -29,30 +29,27 @@ namespace Barcode
         {
             var transaction = new InsertCashTransaction(user, amount);
             
-            return ExecuteTransaction(transaction) as InsertCashTransaction;
+            return ExecuteTransaction(transaction);
         }
 
         private T ExecuteTransaction<T>(T transaction) where T : Transaction, ICommand
         {
-            // TODO: All transactions must be logged to a logfile.
-            
             transaction.Execute();
+            if (transaction.Succeeded) Transactions.Add(transaction);
             
             return transaction;
         }
 
         public T UndoTransaction<T>(T transaction) where T : Transaction, ICommand
         {
-            // TODO: Add logging
-
             transaction.Undo();
 
             return transaction;
         }
 
-        public IEnumerable<Product> GetProductById(uint id)
+        public Product GetProductById(uint id)
         {
-            return Products.Where(p => p.Id == id);
+            return Products.Find(p => p.Id.Equals(id));
         }
 
         // TODO: Strategy Pattern
@@ -61,12 +58,12 @@ namespace Barcode
             return Users.Where(predicate);
         }
 
-        public IEnumerable<User> GetUserByUsername(string username)
+        public User GetUserByUsername(string username)
         {
-            return Users.Where(u => u.Username == username);
+            return Users.Find(u => u.Username == username);
         }
 
-        public IEnumerable<Transaction> GetTransactions(User user, int count)
+        public IEnumerable<Transaction> GetTransactionsForUser(User user, int count)
         {
             return Transactions
                 .Where(transaction => transaction.User.Equals(user))

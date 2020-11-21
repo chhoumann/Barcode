@@ -22,26 +22,28 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Add tests.">
-      <change afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/Log.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Transaction/ILoggable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Transaction/ITransaction.cs" afterDir="false" />
+    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Add log">
+      <change afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/FileLog.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/ILog.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/ICommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/ICommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeSystem/Log.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/User/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/User/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.pdb" afterDir="false" />
@@ -78,19 +80,23 @@
         <option value="$PROJECT_DIR$/Barcode/User/Email.cs" />
         <option value="$PROJECT_DIR$/Barcode/Product/Product.cs" />
         <option value="$PROJECT_DIR$/Barcode/Product/SeasonalProduct.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/Program.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/ProductTests/ProductTests.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/ProductTests/SeasonalProductTests.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/UserTests/UserTests.cs" />
-        <option value="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" />
         <option value="$PROJECT_DIR$/Barcode/User/User.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/ITransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/ICommand.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/ILogStrategy.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/Log.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/FileLog.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/ILog.cs" />
+        <option value="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
+        <option value="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" />
       </list>
     </option>
   </component>
@@ -146,7 +152,7 @@
       <workItem from="1605824526124" duration="1730000" />
       <workItem from="1605861575596" duration="5924000" />
       <workItem from="1605875078946" duration="15350000" />
-      <workItem from="1605953716158" duration="4921000" />
+      <workItem from="1605953716158" duration="14627000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring. Move email to emai">
       <created>1605871067981</created>
@@ -176,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605904396155</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add log">
+      <created>1605958690389</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605958690389</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,23 +199,23 @@
     <option name="coveragePercentColumnWidth" value="150" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="229" />
+    <option name="symbolColumnWidth" value="292" />
     <coverage-tree-state>
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 98% 5/306" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 93% 32/492" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 98% 5/306" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 97% 5/163" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 93% 32/492" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Barcode 87% 32/249" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 98% 5/306" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 97% 5/163" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 97% 5/163" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 93% 32/492" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Barcode 87% 32/249" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Barcode 87% 32/249" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />
@@ -228,7 +241,8 @@
     <MESSAGE value="Refactor. Testing.&#10;Add Transactions" />
     <MESSAGE value="Add User &amp; Transaction tests" />
     <MESSAGE value="Add tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tests." />
+    <MESSAGE value="Add log" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add log" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1692" y="566" width="629" height="550" key="#Vim_Emulation" timestamp="1605825607779">
@@ -263,10 +277,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="589" y="295" key="Rider.ProjectTemplateDialog.Size/0.0.3440.1400@0.0.3440.1400" timestamp="1605804612835" />
-    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1605956466487">
+    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1605963860802">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605956466487" />
+    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605963860802" />
     <state x="1527" y="326" key="RollbackChangesDialog" timestamp="1605902805213">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -275,10 +289,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1316" y="403" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1605824422318" />
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1605904403819">
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1605958693954">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1605904403819" />
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1605958693954" />
     <state x="677" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605871012310">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

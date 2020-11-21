@@ -4,21 +4,28 @@
     {
         public InsertCashTransaction(User user, decimal amount) : base(user, amount) { }
 
-        public void Execute()
+        public override void Execute()
         {
             User.Balance += Amount;
             Succeeded = true;
+            
+            base.Execute();
         }
 
-        public void Undo()
+        public override void Undo()
         {
             if (Succeeded)
             {
                 User.Balance -= Amount;
                 Undone = true;
             }
+            
+            base.Undo();
         }
 
-        public override string ToString() => Undone ? "" : $"{Date.Day} - #{Id} | Insert {Amount} into {User.Username}'s balance. New balance: {User.Balance}";
+        public override string ToString()
+        {
+            return (Undone ? "UNDO: " : "") + $"{Date} - #{Id} | Insert {Amount} into {User.Username}'s balance. New balance: {User.Balance}";
+        }
     }
 }

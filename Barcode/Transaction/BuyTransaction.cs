@@ -11,7 +11,7 @@ namespace Barcode
             Product = product;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             if (Product.CanBeBoughtOnCredit || User.Balance >= Amount)
             {
@@ -24,17 +24,26 @@ namespace Barcode
                 throw new InsufficientCreditsException(
                     $"{User.FirstName} does not have enough credits for {Product.Name}.");
             }
+            
+            base.Execute();
         }
 
-        public void Undo()
+        public override void Undo()
         {
             if (Succeeded)
             {
                 User.Balance += Amount;
                 Undone = true;
             }
+            
+            base.Undo();
         }
         
-        public override string ToString() => Undone ? "" : $"{Date.Day} - #{Id} | {User.FirstName} Purchase {Product.Name} for {Amount}.";
+        public override string ToString()
+        {
+            return (Undone ? "UNDO: " : "") + $"{Date} - #{Id} | User: {User.FirstName} - " +
+                                 $"Purchase " + (Succeeded ? "success" : "failed") +
+                                 $" for {Product.Name} for {Amount}.";
+        }
     }
 }
