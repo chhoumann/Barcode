@@ -1,5 +1,6 @@
 ﻿using System;
 using Barcode;
+using Barcode.Log;
 using NSubstitute;
 using NUnit.Framework;
 

@@ -6,7 +6,7 @@ namespace Barcode
     {
         private static uint _id = 1;
         private string _name;
-        public uint Id { get; private set; }
+        public uint Id { get; set; }
 
         public string Name
         {
@@ -28,6 +28,10 @@ namespace Barcode
             Id = _id++;
             Name = name;
             Price = price;
+        }
+
+        public Product()
+        {
         }
 
         public override string ToString()

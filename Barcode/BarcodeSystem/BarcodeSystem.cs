@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Barcode.DataStore;
+using Barcode.Log;
 
 namespace Barcode
 {
     public class BarcodeSystem
     {
-        public List<Product> Products { get; } = new List<Product>();
+        public List<Product> Products { get; set; } = new List<Product>();
         public List<Product> ActiveProducts { get; } = new List<Product>();
         public List<Transaction> Transactions { get; } = new List<Transaction>();
-        public List<User> Users { get; }= new List<User>();
+        public List<User> Users { get; } = new List<User>();
         private ILog _log;
+        // TODO: Add datareader that initializes lists / reads data into them.
+        // Make it generic and make it use the strategy pattern
 
         public BarcodeSystem(ILog log)
         {
             _log = log;
             Transaction.LogCommand += _log.AddLogEntry;
+            
+            // var ds = new CsvFileDataStore<Product>("Data", "products.csv", ";");
+            // Products = (List<Product>) ds.ReadData();
+            // Console.WriteLine(Products);
         }
 
         public BuyTransaction BuyProduct(User user, Product product)

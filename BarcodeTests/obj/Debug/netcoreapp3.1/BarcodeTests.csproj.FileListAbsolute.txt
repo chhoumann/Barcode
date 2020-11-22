@@ -1,7 +1,3 @@
-D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.csprojAssemblyReference.cache
-D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.AssemblyInfoInputs.cache
-D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.AssemblyInfo.cs
-D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.csproj.CoreCompileInputs.cache
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\Barcode.exe
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
@@ -95,6 +91,10 @@ D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\zh-Han
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\Barcode.dll
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\bin\Debug\netcoreapp3.1\Barcode.pdb
+D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.csprojAssemblyReference.cache
+D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.AssemblyInfoInputs.cache
+D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.AssemblyInfo.cs
+D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.csproj.CoreCompileInputs.cache
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.csproj.CopyComplete
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.dll
 D:\Mapper\Tools\Dev\Projects\Barcode\BarcodeTests\obj\Debug\netcoreapp3.1\BarcodeTests.pdb

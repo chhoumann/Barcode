@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Barcode
+namespace Barcode.Log
 {
     public interface ILog
     {
