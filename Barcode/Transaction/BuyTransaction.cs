@@ -1,14 +1,17 @@
-﻿using Barcode.Exceptions;
+﻿using System;
+using Barcode.Exceptions;
 
 namespace Barcode
 {
     public class BuyTransaction : Transaction, ICommand
     {
         public Product Product { get; }
-        
-        public BuyTransaction(User user, Product product) : base(user, product.Price)
+        public int AmountPurchased { get; private set; }
+
+        public BuyTransaction(User user, Product product, int amountPurchased = 1) : base(user, product.Price * amountPurchased)
         {
             Product = product;
+            AmountPurchased = amountPurchased;
         }
 
         public override void Execute()
@@ -22,7 +25,7 @@ namespace Barcode
             {
                 Succeeded = false;
                 throw new InsufficientCreditsException(
-                    $"{User.FirstName} does not have enough credits for {Product.Name}.");
+                    $"{User.FirstName} does not have enough credits for {AmountPurchased}x {Product.Name}.");
             }
             
             base.Execute();
@@ -43,7 +46,7 @@ namespace Barcode
         {
             return (Undone ? "UNDO: " : "") + $"{Date} - #{Id} | User: {User.FirstName} - " +
                                  $"Purchase " + (Succeeded ? "success" : "failed") +
-                                 $" for {Product.Name} for {Amount}.";
+                                 $" for {AmountPurchased}x {Product.Name} for {Amount}.";
         }
     }
 }

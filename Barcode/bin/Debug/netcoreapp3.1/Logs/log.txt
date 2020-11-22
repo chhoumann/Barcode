@@ -1,0 +1,11 @@
+22-Nov-20 11:06:01 PM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+22-Nov-20 11:41:59 PM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+22-Nov-20 11:46:40 PM - #0 | User: Nancy - Purchase success for 3x Diverse for 300.
+22-Nov-20 11:53:33 PM - #2 | User: Nancy - Purchase success for 3x ½L Kærnemælk (2x¼) for 1575.
+23-Nov-20 12:00:59 AM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+23-Nov-20 12:01:32 AM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+UNDO: 23-Nov-20 12:01:32 AM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+23-Nov-20 12:02:18 AM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+UNDO: 23-Nov-20 12:02:18 AM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
+23-Nov-20 12:06:06 AM - #0 | User: Nancy - Purchase success for 1x Øl(f.eks. Thy, Guld, 47, T-FF) for 1000.
+UNDO: 23-Nov-20 12:06:06 AM - #0 | User: Nancy - Purchase success for 1x Øl(f.eks. Thy, Guld, 47, T-FF) for 1000.

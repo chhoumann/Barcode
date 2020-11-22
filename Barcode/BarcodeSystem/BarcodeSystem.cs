@@ -2,33 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using Barcode.DataStore;
+using Barcode.Exceptions;
 using Barcode.Log;
 
 namespace Barcode
 {
-    public class BarcodeSystem
+    public class BarcodeSystem : IBarcodeSystem
     {
-        public List<Product> Products { get; set; } = new List<Product>();
-        public List<Product> ActiveProducts { get; } = new List<Product>();
-        public List<Transaction> Transactions { get; } = new List<Transaction>();
-        public List<User> Users { get; } = new List<User>();
         private ILog _log;
-        // TODO: Add datareader that initializes lists / reads data into them.
-        // Make it generic and make it use the strategy pattern
+        private IDataStore<Product> _productDataStore;
+        private IDataStore<User> _userDataStore;
+        public IEnumerable<Product> ActiveProducts { get; set; }
 
+        public List<Transaction> Transactions { get; } = new List<Transaction>();
+        public IEnumerable<User> Users { get; private set; } = new List<User>();
+        
         public BarcodeSystem(ILog log)
         {
             _log = log;
             Transaction.LogCommand += _log.AddLogEntry;
-            
-            // var ds = new CsvFileDataStore<Product>("Data", "products.csv", ";");
-            // Products = (List<Product>) ds.ReadData();
-            // Console.WriteLine(Products);
         }
 
-        public BuyTransaction BuyProduct(User user, Product product)
+        public BarcodeSystem AddProductDataStore(IDataStore<Product> productDataStore)
         {
-            var transaction = new BuyTransaction(user, product);
+            _productDataStore = productDataStore;
+            ActiveProducts = _productDataStore.ReadData();
+            return this;
+        }
+
+        public BarcodeSystem AddUserDataStore(IDataStore<User> userDataStore)
+        {
+            _userDataStore = userDataStore;
+            Users = _userDataStore.ReadData();
+            return this;
+        }
+
+        public BuyTransaction BuyProduct(User user, Product product, int amountToPurchase = 1)
+        {
+            var transaction = new BuyTransaction(user, product, amountToPurchase);
             
             return ExecuteTransaction(transaction);
         }
@@ -40,7 +51,7 @@ namespace Barcode
             return ExecuteTransaction(transaction);
         }
 
-        private T ExecuteTransaction<T>(T transaction) where T : Transaction, ICommand
+        public T ExecuteTransaction<T>(T transaction) where T : Transaction, ICommand
         {
             transaction.Execute();
             if (transaction.Succeeded) Transactions.Add(transaction);
@@ -57,18 +68,40 @@ namespace Barcode
 
         public Product GetProductById(uint id)
         {
-            return Products.Find(p => p.Id.Equals(id));
+            try
+            {
+                return ActiveProducts.First(p => p.Id.Equals(id));
+            }
+            catch
+            {
+                throw new ProductNotFoundException($"Product with ID: {id} not found.");
+            }
         }
 
-        // TODO: Strategy Pattern
+        // TODO: Strategy Pattern for predicates
         public IEnumerable<User> GetUsers(Func<User, bool> predicate)
         {
-            return Users.Where(predicate);
+            try
+            {
+                return Users.Where(predicate);
+            }
+            catch (Exception e)
+            {
+                throw new UserNotFoundException("Users not found with given predicate.");
+            }
         }
 
         public User GetUserByUsername(string username)
         {
-            return Users.Find(u => u.Username == username);
+            try
+            {
+                return Users.First(u => u.Username == username);
+            }
+            catch
+            {
+                throw new UserNotFoundException($"User \"{username}\" not found.");
+            }
+            
         }
 
         public IEnumerable<Transaction> GetTransactionsForUser(User user, int count)

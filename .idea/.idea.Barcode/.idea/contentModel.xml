@@ -16,10 +16,19 @@
       <e p="Barcode" t="IncludeRecursive">
         <e p="Barcode.csproj" t="IncludeRecursive" />
         <e p="Barcode.csproj.DotSettings" t="Include" />
+        <e p="BarcodeCLI" t="Include">
+          <e p="BarcodeCLI.cs" t="Include" />
+          <e p="BarcodeEvent.cs" t="Include" />
+          <e p="IBarcodeCLI.cs" t="Include" />
+        </e>
         <e p="BarcodeSystem" t="Include">
           <e p="BarcodeSystem.cs" t="Include" />
+          <e p="IBarcodeSystem.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Controller" t="Include">
+          <e p="BarcodeController.cs" t="Include" />
+        </e>
         <e p="DataStore" t="Include">
           <e p="CsvFileDataStore.cs" t="Include" />
           <e p="FileDataStore.cs" t="Include" />
@@ -31,6 +40,8 @@
           <e p="InsufficientCreditsException.cs" t="Include" />
           <e p="InvalidEmailException.cs" t="Include" />
           <e p="InvalidUsernameException.cs" t="Include" />
+          <e p="ProductNotFoundException.cs" t="Include" />
+          <e p="UserNotFoundException.cs" t="Include" />
         </e>
         <e p="ICommand.cs" t="Include" />
         <e p="Log" t="Include">

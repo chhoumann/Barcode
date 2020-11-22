@@ -11,7 +11,7 @@ namespace Barcode
         private Email _email;
         private string _firstName;
         private string _lastName;
-        public uint Id { get; private set; }
+        public uint Id { get; set; }
 
         public string FirstName
         {
@@ -57,7 +57,7 @@ namespace Barcode
             set => _email.EmailAddress = value;
         }
 
-        private User()
+        public User()
         {
             Id = userIdTracker++;
             _email = new Email();
