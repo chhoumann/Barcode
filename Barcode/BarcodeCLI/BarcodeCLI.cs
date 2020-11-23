@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Barcode.BarcodeCLI
 {
@@ -42,6 +43,11 @@ namespace Barcode.BarcodeCLI
             Console.WriteLine(transaction.ToString());
         }
 
+        public void DisplayAddCreditsTransaction(InsertCashTransaction transaction)
+        {
+            Console.WriteLine(transaction.ToString());
+        }
+
         public void Close()
         {
             _alive = false;
@@ -64,11 +70,27 @@ namespace Barcode.BarcodeCLI
             else DisplayGeneralError($"Transaction #{transaction.Id} was not undone.");
         }
 
+        public void DisplayProductActivatedChange(Product product)
+        {
+            Console.WriteLine($"{product.Name} is now {(product.Active ? "active" : "deactivated")}.");
+        }
+
+        public void DisplayProductOnCreditChange(Product product)
+        {
+            Console.WriteLine($"{product.Name} is now {(product.CanBeBoughtOnCredit ? "able" : "unable")} to be bought on credit.");
+        }
+
+        public void DisplayNotEnoughArguments(string[] command)
+        {
+            Console.WriteLine($"Not enough arguments in command: {String.Join(" ", command)}");
+        }
+
         public void Start()
         {
             Console.WriteLine($"Welcome to the BarCode system.");
             while (_alive)
             {
+                Console.Write(" > ");
                 CommandEntered?.Invoke(Console.ReadLine());
             }
         }

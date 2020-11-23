@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Barcode.BarcodeCLI;
 using Barcode.Exceptions;
 using Microsoft.VisualBasic;
@@ -11,15 +12,19 @@ namespace Barcode.Controller
         private readonly IBarcodeCLI _barcodeCli;
         private readonly IBarcodeSystem _barcodeSystem;
         private Transaction latestTransaction;
-        private static Dictionary<string, Action> commands = new Dictionary<string, Action>();
+        private Dictionary<string, Action<string[]>> commands = new Dictionary<string, Action<string[]>>();
+        private Dictionary<string, Action<string[]>> adminCommands = new Dictionary<string, Action<string[]>>();
 
         public BarcodeController(IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem)
         {
             _barcodeCli = barcodeCli;
             _barcodeSystem = barcodeSystem;
-            AddCommandsToDictionary();
-            _barcodeCli.CommandEntered += ParseCommand;
             
+            AddCommandsToDictionary(commands);
+            AddAdminCommandsToDictionary(adminCommands);
+            
+            _barcodeCli.CommandEntered += ParseCommand;
+
             _barcodeCli.Start();
             
         }
@@ -32,7 +37,9 @@ namespace Barcode.Controller
             String[] commandParts = formattedCommand.Split(' ');
             
             if (commands.ContainsKey(commandParts[0]))
-                commands[formattedCommand].Invoke();
+                commands[commandParts[0]].Invoke(commandParts);
+            else if (adminCommands.ContainsKey(commandParts[0]))
+                adminCommands[commandParts[0]].Invoke(commandParts);
             else if (commandParts.Length == 1)
                 TryPrintUser(formattedCommand);
             else if (commandParts.Length == 2 || commandParts.Length == 3) 
@@ -99,10 +106,107 @@ namespace Barcode.Controller
         }
 
 
-        private void AddCommandsToDictionary()
+        private void AddCommandsToDictionary(Dictionary<string, Action<string[]>> commandDictionary)
         {
-            commands["close"] = () => { _barcodeCli.Close(); };
-            commands["undo"] = UndoLatestTransaction;
+            commandDictionary["close"] = (command) => { _barcodeCli.Close(); };
+            commandDictionary["undo"] = (command) => UndoLatestTransaction();
+        }
+
+        private void AddAdminCommandsToDictionary(Dictionary<string, Action<string[]>> adminCommandDictionary)
+        {
+            adminCommandDictionary[":q"] = (command) => _barcodeCli.Close();
+            adminCommandDictionary[":quit"] = (command) => _barcodeCli.Close();
+
+            adminCommandDictionary[":activate"] = command => ProductManager(command, ProductSetable.Active, true);
+            adminCommandDictionary[":deactivate"] = command => ProductManager(command, ProductSetable.Active, false);
+
+            adminCommandDictionary[":crediton"] = command => ProductManager(command, ProductSetable.Credit, true);
+            adminCommandDictionary[":creditoff"] = command => ProductManager(command, ProductSetable.Credit, false);
+
+            adminCommandDictionary[":addcredits"] = command => AdminAddCreditToUser(command);
+        }
+
+        private void AdminAddCreditToUser(string[] command)
+        {
+            if (!EnoughArgumentsInCommand(command, 3)) return;
+            string usernameString = command[1];
+            string amountString = command[2];
+            
+            try
+            {
+                User user = _barcodeSystem.GetUserByUsername(usernameString);
+
+                if (decimal.TryParse(amountString, out decimal amount))
+                {
+                    var transaction = _barcodeSystem.AddCreditsToAccount(user, amount);
+
+                    latestTransaction = transaction;
+                    
+                    _barcodeCli.DisplayAddCreditsTransaction(transaction);
+                }
+            }
+            catch (UserNotFoundException e)
+            {
+                _barcodeCli.DisplayUserNotFound(usernameString);
+                throw;
+            }
+        }
+
+        enum ProductSetable
+        {
+            Credit,
+            Active
+        }
+
+        private void ProductManager(string[] command, ProductSetable set, bool active)
+        {
+            if (!EnoughArgumentsInCommand(command, 2)) return;
+            
+            string productIdString = command[1];
+            
+            if (uint.TryParse(productIdString, out var productId))
+            {
+                try
+                {
+                    var product = _barcodeSystem.GetProductById(productId);
+
+                    switch (set)
+                    {
+                        case ProductSetable.Credit:
+                            product.CanBeBoughtOnCredit = active;
+                            _barcodeCli.DisplayProductOnCreditChange(product);
+                            break;
+                        case ProductSetable.Active:
+                            product.Active = active;
+                            _barcodeCli.DisplayProductActivatedChange(product);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(set), set, null);
+                    }
+
+                }
+                catch (ProductNotFoundException)
+                {
+                    _barcodeCli.DisplayProductNotFound(productIdString);
+                }
+                catch (Exception e)
+                {
+                    _barcodeCli.DisplayGeneralError(e.ToString());
+                }
+            }
+            else
+            {
+                _barcodeCli.DisplayProductNotFound(productIdString);
+            }
+        }
+
+        private bool EnoughArgumentsInCommand(string[] command, int amountOfArgumentsExpected)
+        {
+            if (command.Length == amountOfArgumentsExpected) return true;
+            
+            _barcodeCli.DisplayNotEnoughArguments(command);
+            return false;
+
         }
 
         private void UndoLatestTransaction()

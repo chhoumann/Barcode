@@ -14,5 +14,9 @@
         void Start();
         event BarcodeEvent CommandEntered;
         void DisplayUndoTransaction(Transaction transaction);
+        void DisplayProductActivatedChange(Product product);
+        void DisplayProductOnCreditChange(Product product);
+        void DisplayNotEnoughArguments(string[] command);
+        void DisplayAddCreditsTransaction(InsertCashTransaction transaction);
     }
 }

@@ -9,3 +9,10 @@ UNDO: 23-Nov-20 12:01:32 AM - #0 | User: Nancy - Purchase success for 1x Diverse
 UNDO: 23-Nov-20 12:02:18 AM - #0 | User: Nancy - Purchase success for 1x Diverse for 100.
 23-Nov-20 12:06:06 AM - #0 | User: Nancy - Purchase success for 1x Øl(f.eks. Thy, Guld, 47, T-FF) for 1000.
 UNDO: 23-Nov-20 12:06:06 AM - #0 | User: Nancy - Purchase success for 1x Øl(f.eks. Thy, Guld, 47, T-FF) for 1000.
+23-Nov-20 3:29:06 PM - #0 | Insert 100 into ndavo's balance. New balance: 40100
+23-Nov-20 3:33:34 PM - #0 | Insert 100 into ndavo's balance. New balance: 40100
+UNDO: 23-Nov-20 3:33:34 PM - #0 | Insert 100 into ndavo's balance. New balance: 40000
+23-Nov-20 3:39:22 PM - #0 | Insert 100 into ndavo's balance. New balance: 40100
+UNDO: 23-Nov-20 3:39:22 PM - #0 | Insert 100 into ndavo's balance. New balance: 40000
+23-Nov-20 3:39:57 PM - #0 | Insert 100 into ndavo's balance. New balance: 40100
+UNDO: 23-Nov-20 3:39:57 PM - #0 | Insert 100 into ndavo's balance. New balance: 40000
