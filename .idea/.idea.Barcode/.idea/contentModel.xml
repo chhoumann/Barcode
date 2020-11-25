@@ -26,8 +26,21 @@
           <e p="IBarcodeSystem.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Command.cs" t="Include" />
         <e p="Controller" t="Include">
           <e p="BarcodeController.cs" t="Include" />
+          <e p="CliCommand.cs" t="Include" />
+          <e p="Commands" t="Include">
+            <e p="AdminCommands" t="Include">
+              <e p="AddCreditToUser.cs" t="Include" />
+            </e>
+            <e p="CloseCommand.cs" t="Include" />
+            <e p="UserCommands" t="Include">
+              <e p="ProductSetActiveState.cs" t="Include" />
+              <e p="ProductSetCommand.cs" t="Include" />
+              <e p="ProductSetCreditState.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="DataStore" t="Include">
           <e p="CsvFileDataStore.cs" t="Include" />

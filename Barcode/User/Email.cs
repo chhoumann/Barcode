@@ -5,7 +5,7 @@ namespace Barcode
 {
     public class Email
     {
-        private string _emailAddress;
+        private string emailAddress;
 
         public Email() { }
 
@@ -16,10 +16,10 @@ namespace Barcode
 
         public string EmailAddress
         {
-            get => _emailAddress;
+            get => emailAddress;
             set
             {
-                if (ValidateEmail(value)) _emailAddress = value;
+                if (ValidateEmail(value)) emailAddress = value;
                 else throw new InvalidEmailException($"Invalid Email Address given: {value}");
             }
         }
@@ -46,5 +46,7 @@ namespace Barcode
             
             return (localPartIsLegal && domainPartIsLegal);
         }
+
+        public override string ToString() => EmailAddress;
     }
 }

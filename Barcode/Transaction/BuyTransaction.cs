@@ -44,9 +44,9 @@ namespace Barcode
         
         public override string ToString()
         {
-            return (Undone ? "UNDO: " : "") + $"{Date} - #{Id} | User: {User.FirstName} - " +
-                                 $"Purchase " + (Succeeded ? "success" : "failed") +
-                                 $" for {AmountPurchased}x {Product.Name} for {Amount}.";
+            return $"{Date} - #{Id} | User: {User.FirstName} - " +
+                     $"Purchase " + (Succeeded ? "success" : "failed") +
+                     $" for {AmountPurchased}x {Product.Name} for {Amount}";
         }
     }
 }

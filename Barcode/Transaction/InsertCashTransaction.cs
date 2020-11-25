@@ -25,7 +25,7 @@
 
         public override string ToString()
         {
-            return (Undone ? "UNDO: " : "") + $"{Date} - #{Id} | Insert {Amount} into {User.Username}'s balance. New balance: {User.Balance}";
+            return $"{Date} - #{Id} | Insert {Amount} into {User.Username}'s balance. New balance: {User.Balance}";
         }
     }
 }

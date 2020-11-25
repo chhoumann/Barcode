@@ -6,61 +6,75 @@ namespace Barcode
 {
     public class User : IComparable
     {
+        public static event Action<User> UserBalanceNotification;
         private static uint userIdTracker = 0;
-        private string _username;
-        private Email _email;
-        private string _firstName;
-        private string _lastName;
+        private const decimal balanceNotificationThreshold = 50m;
+        
+        private string username;
+        private Email email;
+        private string firstName;
+        private string lastName;
+        private decimal balance;
+
+        public decimal Balance
+        {
+            get => balance;
+            set
+            {
+                balance = value;
+                if (balance <= balanceNotificationThreshold) UserBalanceNotification?.Invoke(this);
+            }
+        }
+
         public uint Id { get; set; }
 
         public string FirstName
         {
-            get => _firstName;
+            get => firstName;
             set
             {
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentException("First Name cannot be null or empty.", nameof(value));
-                _firstName = value;
+                firstName = value;
             }
         }
 
         public string LastName
         {
-            get => _lastName;
+            get => lastName;
             set
             {
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentException("Last Name cannot be null or empty.", nameof(value));
-                _lastName = value;
+                lastName = value;
             }
         }
 
         public string Username
         {
-            get => _username;
+            get => username;
             set
             {
                 var illegalCharacterRegex = new Regex(@"([^a-z0-9_])");
                 
                 if (!illegalCharacterRegex.IsMatch(value) && !string.IsNullOrWhiteSpace(value))
-                    _username = value;
+                    username = value;
                 else
                     throw new InvalidUsernameException($"Invalid username given: {value}");
             }
         }
 
-        public decimal Balance { get; set; }
 
         public string Email
         {
-            get => _email.EmailAddress;
-            set => _email.EmailAddress = value;
+            get => email.EmailAddress;
+            set => email.EmailAddress = value;
         }
 
         public User()
         {
             Id = userIdTracker++;
-            _email = new Email();
+            email = new Email();
         }
 
         public User(string firstName, string lastName, string username, string emailAddress) : this()
@@ -68,19 +82,21 @@ namespace Barcode
             FirstName = firstName;
             LastName = lastName;
             Username = username;
-            _email = new Email(emailAddress);
+            email = new Email(emailAddress);
         }
 
         public override string ToString()
         {
-            return $"{nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}, {nameof(Email)}: {Email}";
+            return $"{firstName} {lastName} - {username} | #{Id}" +
+                   $"\n" +
+                   $"{email}" +
+                   $"\n" +
+                   $"Balance: {Balance} credits";
         }
 
         public int CompareTo(object? obj)
         {
             return obj is User otherUser ? Id.CompareTo(otherUser.Id) : 1;
         }
-
-        public static event Action<User> UserBalanceNotification;
     }
 }

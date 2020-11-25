@@ -77,10 +77,12 @@ namespace BarcodeTests
         public void InsertCashTransaction_InsertCash_Succeeds()
         {
             User user = Substitute.For<User>(userArgs);
-
+            decimal previousUserBalance = user.Balance;
+            
             var transaction = new InsertCashTransaction(user, 50m);
             transaction.Execute();
             
+            Assert.That(user.Balance, Is.EqualTo(previousUserBalance + 50m));
             Assert.That(transaction.Succeeded, Is.True);
         }
 

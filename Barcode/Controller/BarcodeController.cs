@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Barcode.BarcodeCLI;
+using Barcode.Controller.Commands;
+using Barcode.Controller.Commands.AdminCommands;
+using Barcode.Controller.Commands.UserCommands;
 using Barcode.Exceptions;
 using Microsoft.VisualBasic;
 
@@ -9,46 +12,79 @@ namespace Barcode.Controller
 {
     public class BarcodeController
     {
-        private readonly IBarcodeCLI _barcodeCli;
-        private readonly IBarcodeSystem _barcodeSystem;
-        private Transaction latestTransaction;
-        private Dictionary<string, Action<string[]>> commands = new Dictionary<string, Action<string[]>>();
+        private readonly IBarcodeCLI barcodeCli;
+        private readonly IBarcodeSystem barcodeSystem;
+        private List<ICommand> commandsExecuted = new List<ICommand>();
+        private Dictionary<string, Action<string[]>> userCommands = new Dictionary<string, Action<string[]>>();
         private Dictionary<string, Action<string[]>> adminCommands = new Dictionary<string, Action<string[]>>();
 
         public BarcodeController(IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem)
         {
-            _barcodeCli = barcodeCli;
-            _barcodeSystem = barcodeSystem;
-            
-            AddCommandsToDictionary(commands);
+            this.barcodeCli = barcodeCli;
+            this.barcodeSystem = barcodeSystem;
+
+            AddUserCommandsToDictionary(userCommands);
             AddAdminCommandsToDictionary(adminCommands);
-            
-            _barcodeCli.CommandEntered += ParseCommand;
 
-            _barcodeCli.Start();
-            
+            this.barcodeCli.CommandEntered += ParseCommand;
+            User.UserBalanceNotification += barcodeCli.DisplayUserBalanceNotification;
+            CliCommand.CommandFired += SetLastCommandFired;
+
+            this.barcodeCli.Start();
+
         }
 
-        private void ParseCommand(string command)
+        private void SetLastCommandFired(ICommand command) => commandsExecuted.Add(command);
+
+        private void ParseCommand(string inputCommand)
         {
-            string formattedCommand = (Strings.Trim(command)).ToLower();
-            
+            string formattedCommand = (Strings.Trim(inputCommand)).ToLower();
+
             if (string.IsNullOrEmpty(formattedCommand)) return;
-            String[] commandParts = formattedCommand.Split(' ');
-            
-            if (commands.ContainsKey(commandParts[0]))
-                commands[commandParts[0]].Invoke(commandParts);
-            else if (adminCommands.ContainsKey(commandParts[0]))
-                adminCommands[commandParts[0]].Invoke(commandParts);
-            else if (commandParts.Length == 1)
-                TryPrintUser(formattedCommand);
-            else if (commandParts.Length == 2 || commandParts.Length == 3) 
-                TryPurchaseProducts(commandParts);
-            else if (commandParts.Length > 3) 
-                _barcodeCli.DisplayTooManyArgumentsError(formattedCommand);
+            string[] command = formattedCommand.Split(' ');
+
+            if (formattedCommand.StartsWith(':'))
+                TryExecuteAdminCommand(command);
+            else
+                TryExecuteUserCommand(command);
         }
 
-        public void TryPurchaseProducts(string[] commandParts)
+        private void TryExecuteUserCommand(string[] command)
+        {
+            bool isUserCommand = userCommands.ContainsKey(command[0]);
+
+            if (isUserCommand)
+                userCommands[command[0]]?.Invoke(command);
+            else
+            {
+                switch (command.Length)
+                {
+                    case 1:
+                        TryPrintUser(command[0]);
+                        break;
+                    case 2:
+                    case 3:
+                        TryPurchaseProducts(command);
+                        break;
+                    default:
+                        string fullCommand = String.Join(" ", command);
+                        barcodeCli.DisplayTooManyArgumentsError(fullCommand);
+                        break;
+                }
+            }
+        }
+
+        private void TryExecuteAdminCommand(string[] command)
+        {
+            bool isAdminCommand = adminCommands.ContainsKey(command[0]);
+
+            if (isAdminCommand)
+                adminCommands[command[0]]?.Invoke(command);
+            else
+                barcodeCli.DisplayAdminCommandNotFoundMessage(string.Join(" ", command));
+        }
+
+    public void TryPurchaseProducts(string[] commandParts)
         {
             string usernameString = commandParts[0];
             string productIdString = commandParts[1];
@@ -58,37 +94,38 @@ namespace Barcode.Controller
 
             if (commandParts.Length == 3 && !int.TryParse(commandParts[2], out amountToPurchase))
             {
-                _barcodeCli.DisplayGeneralError($"{commandParts[2]} is not a valid amount.");
+                barcodeCli.DisplayGeneralError($"{commandParts[2]} is not a valid amount.");
                 return;
             }
 
             try
             {
-                user = _barcodeSystem.GetUserByUsername(usernameString);
+                user = barcodeSystem.GetUserByUsername(usernameString);
                 if (uint.TryParse(productIdString, out var productId))
                 {
-                    product = _barcodeSystem.GetProductById(productId);
                     try
                     {
-                        var transaction = _barcodeSystem.BuyProduct(user, product, amountToPurchase);
+                        product = barcodeSystem.GetProductById(productId);
+                        try
+                        {
+                            BuyTransaction transaction = barcodeSystem.BuyProduct(user, product, amountToPurchase);
 
-                        latestTransaction = transaction;
-                        
-                        _barcodeCli.DisplayUserBuysProduct(transaction);
+                            barcodeCli.DisplayUserBuysProduct(transaction);
+                        }
+                        catch (InsufficientCreditsException)
+                        {
+                            barcodeCli.DisplayInsufficientCash(user, product);
+                        }
                     }
-                    catch (InsufficientCreditsException)
+                    catch (ProductNotFoundException)
                     {
-                        _barcodeCli.DisplayInsufficientCash(user, product);
+                        barcodeCli.DisplayProductNotFound(productIdString);
                     }
-                }
-                else
-                {
-                    _barcodeCli.DisplayProductNotFound(productIdString);
                 }
             }
             catch (UserNotFoundException)
             {
-                _barcodeCli.DisplayUserNotFound(usernameString);
+                barcodeCli.DisplayUserNotFound(usernameString);
             }
         }
 
@@ -96,129 +133,72 @@ namespace Barcode.Controller
         {
             try
             {
-                User user = _barcodeSystem.GetUserByUsername(username);
-                _barcodeCli.DisplayUserInfo(user);
+                User user = barcodeSystem.GetUserByUsername(username);
+                barcodeCli.DisplayUserInfo(user);
             }
-            catch (UserNotFoundException e)
+            catch (UserNotFoundException)
             {
-                _barcodeCli.DisplayUserNotFound(username);
+                barcodeCli.DisplayUserNotFound(username);
             }
         }
 
 
-        private void AddCommandsToDictionary(Dictionary<string, Action<string[]>> commandDictionary)
+        private void AddUserCommandsToDictionary(Dictionary<string, Action<string[]>> commandDictionary)
         {
-            commandDictionary["close"] = (command) => { _barcodeCli.Close(); };
-            commandDictionary["undo"] = (command) => UndoLatestTransaction();
+            commandDictionary["close"] = command => new CloseCommand(barcodeCli).Execute(); 
+            commandDictionary["undo"] = command => UndoLastCommand();
+            commandDictionary["redo"] = command => RedoLastCommand();
         }
 
         private void AddAdminCommandsToDictionary(Dictionary<string, Action<string[]>> adminCommandDictionary)
         {
-            adminCommandDictionary[":q"] = (command) => _barcodeCli.Close();
-            adminCommandDictionary[":quit"] = (command) => _barcodeCli.Close();
+            adminCommandDictionary[":q"] = command => new 
+                CloseCommand(barcodeCli).Execute();
+            adminCommandDictionary[":quit"] = command => new 
+                CloseCommand(barcodeCli).Execute();
 
-            adminCommandDictionary[":activate"] = command => ProductManager(command, ProductSetable.Active, true);
-            adminCommandDictionary[":deactivate"] = command => ProductManager(command, ProductSetable.Active, false);
+            adminCommandDictionary[":activate"] = command => new
+                ProductSetActiveState(command, true, barcodeCli, barcodeSystem).Execute();
+            adminCommandDictionary[":deactivate"] = command => new 
+                ProductSetActiveState(command, false, barcodeCli, barcodeSystem).Execute();
 
-            adminCommandDictionary[":crediton"] = command => ProductManager(command, ProductSetable.Credit, true);
-            adminCommandDictionary[":creditoff"] = command => ProductManager(command, ProductSetable.Credit, false);
+            adminCommandDictionary[":crediton"] = command => new
+                ProductSetCreditState(command, true, barcodeCli, barcodeSystem).Execute();
+            adminCommandDictionary[":creditoff"] = command =>
+                new ProductSetCreditState(command, false, barcodeCli, barcodeSystem).Execute();
 
-            adminCommandDictionary[":addcredits"] = command => AdminAddCreditToUser(command);
+            adminCommandDictionary[":addcredits"] = command => new 
+                AddCreditToUser(command, barcodeCli, barcodeSystem).Execute();
         }
 
-        private void AdminAddCreditToUser(string[] command)
+        private void UndoLastCommand()
         {
-            if (!EnoughArgumentsInCommand(command, 3)) return;
-            string usernameString = command[1];
-            string amountString = command[2];
-            
             try
             {
-                User user = _barcodeSystem.GetUserByUsername(usernameString);
-
-                if (decimal.TryParse(amountString, out decimal amount))
-                {
-                    var transaction = _barcodeSystem.AddCreditsToAccount(user, amount);
-
-                    latestTransaction = transaction;
-                    
-                    _barcodeCli.DisplayAddCreditsTransaction(transaction);
-                }
+                ICommand lastCommandExecuted = 
+                    commandsExecuted.FindLast(command => command.Undone == false && command.Succeeded);
+                
+                lastCommandExecuted?.Undo();
+                barcodeCli.DisplayUndoCommand(lastCommandExecuted);
             }
-            catch (UserNotFoundException e)
+            catch
             {
-                _barcodeCli.DisplayUserNotFound(usernameString);
-                throw;
+                barcodeCli.DisplayGeneralError("There is no command to undo.");
             }
         }
 
-        enum ProductSetable
+        private void RedoLastCommand()
         {
-            Credit,
-            Active
-        }
-
-        private void ProductManager(string[] command, ProductSetable set, bool active)
-        {
-            if (!EnoughArgumentsInCommand(command, 2)) return;
-            
-            string productIdString = command[1];
-            
-            if (uint.TryParse(productIdString, out var productId))
+            try
             {
-                try
-                {
-                    var product = _barcodeSystem.GetProductById(productId);
-
-                    switch (set)
-                    {
-                        case ProductSetable.Credit:
-                            product.CanBeBoughtOnCredit = active;
-                            _barcodeCli.DisplayProductOnCreditChange(product);
-                            break;
-                        case ProductSetable.Active:
-                            product.Active = active;
-                            _barcodeCli.DisplayProductActivatedChange(product);
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException(nameof(set), set, null);
-                    }
-
-                }
-                catch (ProductNotFoundException)
-                {
-                    _barcodeCli.DisplayProductNotFound(productIdString);
-                }
-                catch (Exception e)
-                {
-                    _barcodeCli.DisplayGeneralError(e.ToString());
-                }
+                ICommand lastUndoneCommand = 
+                    commandsExecuted.FindLast(command => command.Undone && command.Succeeded);
+                
+                lastUndoneCommand?.Execute();
             }
-            else
+            catch
             {
-                _barcodeCli.DisplayProductNotFound(productIdString);
-            }
-        }
-
-        private bool EnoughArgumentsInCommand(string[] command, int amountOfArgumentsExpected)
-        {
-            if (command.Length == amountOfArgumentsExpected) return true;
-            
-            _barcodeCli.DisplayNotEnoughArguments(command);
-            return false;
-
-        }
-
-        private void UndoLatestTransaction()
-        {
-            if (latestTransaction != null)
-            {
-                latestTransaction.Undo();
-                _barcodeCli.DisplayUndoTransaction(latestTransaction);
-            }
-            else
-            {
-                _barcodeCli.DisplayGeneralError("There is no transaction to undo.");
+                barcodeCli.DisplayGeneralError("There is no command to redo.");
             }
         }
     }

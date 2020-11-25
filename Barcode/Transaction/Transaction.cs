@@ -2,8 +2,9 @@
 
 namespace Barcode
 {
-    public abstract class Transaction : ITransaction, ICommand, ILoggable<ITransaction>
+    public abstract class Transaction : Command, ITransaction, ILoggable<ITransaction>
     {
+        public static event Action<Transaction> LogTransaction;
         private static uint _idTracker = 0;
         private uint _id;
 
@@ -17,7 +18,6 @@ namespace Barcode
         public decimal Amount { get; set; }
         public bool Succeeded { get; protected set; }
         public bool Undone { get; protected set; }
-        public static event Action<Transaction> LogCommand;
 
         public Transaction(User user, decimal amount)
         {
@@ -35,12 +35,12 @@ namespace Barcode
 
         public virtual void Execute()
         {
-            LogCommand?.Invoke(this);
+            LogTransaction?.Invoke(this);
         }
 
         public virtual void Undo()
         {
-            LogCommand?.Invoke(this);
+            LogTransaction?.Invoke(this);
         }
     }
 }

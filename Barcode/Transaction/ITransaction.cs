@@ -8,8 +8,8 @@ namespace Barcode
         User User { get; set; }
         DateTime Date { get; set; }
         decimal Amount { get; set; }
-        bool Succeeded { get; }
-        bool Undone { get; }
+        public bool Succeeded { get; }
+        public bool Undone { get; }
 
         string ToString();
     }

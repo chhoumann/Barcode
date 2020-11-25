@@ -9,9 +9,9 @@ namespace Barcode
 {
     public class BarcodeSystem : IBarcodeSystem
     {
-        private ILog _log;
-        private IDataStore<Product> _productDataStore;
-        private IDataStore<User> _userDataStore;
+        private ILog log;
+        private IDataStore<Product> productDataStore;
+        private IDataStore<User> userDataStore;
         public IEnumerable<Product> ActiveProducts { get; set; }
 
         public List<Transaction> Transactions { get; } = new List<Transaction>();
@@ -19,21 +19,27 @@ namespace Barcode
         
         public BarcodeSystem(ILog log)
         {
-            _log = log;
-            Transaction.LogCommand += _log.AddLogEntry;
+            this.log = log;
+            Transaction.LogTransaction += this.log.AddLogEntry;
         }
 
         public BarcodeSystem AddProductDataStore(IDataStore<Product> productDataStore)
         {
-            _productDataStore = productDataStore;
-            ActiveProducts = _productDataStore.ReadData();
+            this.productDataStore = productDataStore;
+            IEnumerable<Product> productStore = this.productDataStore.ReadData();
+
+            ActiveProducts = productStore.ToList();
+            
             return this;
         }
 
         public BarcodeSystem AddUserDataStore(IDataStore<User> userDataStore)
         {
-            _userDataStore = userDataStore;
-            Users = _userDataStore.ReadData();
+            this.userDataStore = userDataStore;
+            IEnumerable<User> userStore = this.userDataStore.ReadData();
+            
+            Users = userStore.ToList();
+            
             return this;
         }
 

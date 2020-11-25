@@ -13,10 +13,11 @@
         void DisplayGeneralError(string errorString);
         void Start();
         event BarcodeEvent CommandEntered;
-        void DisplayUndoTransaction(Transaction transaction);
+        void DisplayUndoCommand(ICommand command);
         void DisplayProductActivatedChange(Product product);
         void DisplayProductOnCreditChange(Product product);
         void DisplayNotEnoughArguments(string[] command);
         void DisplayAddCreditsTransaction(InsertCashTransaction transaction);
+        void DisplayUserBalanceNotification(User user);
     }
 }

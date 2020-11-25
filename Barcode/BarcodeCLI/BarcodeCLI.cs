@@ -63,11 +63,9 @@ namespace Barcode.BarcodeCLI
             Console.WriteLine($"{errorString}");
         }
 
-        public void DisplayUndoTransaction(Transaction transaction)
+        public void DisplayUndoCommand(ICommand command)
         {
-            if (transaction.Undone)
-                Console.WriteLine(transaction.ToString());
-            else DisplayGeneralError($"Transaction #{transaction.Id} was not undone.");
+            Console.WriteLine($"Command \"{command}\" was {(command.Undone ? "" : "not ")}undone.");
         }
 
         public void DisplayProductActivatedChange(Product product)
@@ -83,6 +81,11 @@ namespace Barcode.BarcodeCLI
         public void DisplayNotEnoughArguments(string[] command)
         {
             Console.WriteLine($"Not enough arguments in command: {String.Join(" ", command)}");
+        }
+
+        public void DisplayUserBalanceNotification(User user)
+        {
+            Console.WriteLine($"User {user.Username} has a low balance: {user.Balance} credits");
         }
 
         public void Start()
