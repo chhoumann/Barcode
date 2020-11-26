@@ -33,7 +33,6 @@
           <e p="Commands" t="Include">
             <e p="AdminCommands" t="Include">
               <e p="AddCreditToUser.cs" t="Include" />
-              <e p="ClearCommand.cs" t="Include" />
               <e p="DisplayAllProductsCommand.cs" t="Include" />
               <e p="DisplayCommandLogCommand.cs" t="Include" />
             </e>

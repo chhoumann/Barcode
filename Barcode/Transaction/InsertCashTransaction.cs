@@ -27,7 +27,7 @@
 
         public override string ToString()
         {
-            return $"{Date} - #{Id} | Insert {Amount} into {User.Username}'s balance. New balance: {User.Balance}";
+            return $"{Date} - #{Id} | Insert {Amount} credits into {User.Username}'s balance. New balance: {User.Balance} credits";
         }
     }
 }

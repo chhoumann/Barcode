@@ -1,4 +1,6 @@
-﻿using Barcode.BarcodeCLI;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Barcode.BarcodeCLI;
 using Barcode.Exceptions;
 
 namespace Barcode.Controller.Commands.UserCommands
@@ -22,7 +24,11 @@ namespace Barcode.Controller.Commands.UserCommands
             try
             {
                 User user = barcodeSystem.GetUserByUsername(username);
-                barcodeCli.DisplayUserInfo(user);
+                List<Transaction> transactionsForUser = new List<Transaction>();
+
+                transactionsForUser = barcodeSystem.GetTransactionsForUser(user, 10).ToList();
+                
+                barcodeCli.DisplayUserInfo(user, transactionsForUser);
             }
             catch (UserNotFoundException)
             {

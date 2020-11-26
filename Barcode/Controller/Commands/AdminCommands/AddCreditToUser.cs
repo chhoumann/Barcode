@@ -18,7 +18,11 @@ namespace Barcode.Controller.Commands.AdminCommands
 
         public override void Execute()
         {
-            if (HasEnoughArguments(3) is false) return;
+            if (!HasEnoughArguments(3))
+            {
+                barcodeCli.DisplayNotEnoughArguments(Command);
+                return;
+            }
 
             string username = Command[1];
             string amountString = Command[2];

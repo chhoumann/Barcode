@@ -43,7 +43,12 @@ namespace Barcode.Controller
         {
             string formattedCommand = Strings.Trim(inputCommand).ToLower();
 
-            if (string.IsNullOrEmpty(formattedCommand)) return;
+            if (string.IsNullOrEmpty(formattedCommand))
+            {
+                barcodeCli.DisplayGeneralError("No command entered. Please enter a command.");
+                return;
+            }
+
             string[] command = formattedCommand.Split(' ');
 
             if (formattedCommand.StartsWith(':'))
@@ -123,8 +128,6 @@ namespace Barcode.Controller
             adminCommandDictionary[":help"] = command => new
                 HelpCommand(adminCommandDictionary, barcodeCli).Execute();
             
-            adminCommandDictionary[":clear"] = command => new ClearCommand(barcodeCli).Execute();
-
             adminCommandDictionary[":commandlog"] = command => new DisplayCommandLogCommand(commandsExecuted, barcodeCli).Execute();
         }
 

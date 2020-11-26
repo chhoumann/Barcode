@@ -32,13 +32,10 @@ namespace Barcode.Controller.Commands.UserCommands.ProductSet
                 uint productId = Convert.ToUInt32(productIdString);
                 product = barcodeSystem.GetProductById(productId);
             }
-            catch (ProductNotFoundException)
+            catch (Exception)
             {
                 barcodeCli.DisplayProductNotFound(productIdString);
-            }
-            catch (Exception e)
-            {
-                barcodeCli.DisplayGeneralError(e.ToString());
+                return false;
             }
 
             return true;

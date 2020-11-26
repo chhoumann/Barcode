@@ -19,9 +19,16 @@ namespace Barcode.BarcodeCLI
             Console.WriteLine($"Product \"{product}\" not found.");
         }
 
-        public void DisplayUserInfo(User user)
+        public void DisplayUserInfo(User user, List<Transaction> transactionsForUser)
         {
             Console.WriteLine(user.ToString());
+            
+            Console.WriteLine($"\n" +
+                              $"This user has made {transactionsForUser.Count} " +
+                              $"transaction{(transactionsForUser.Count > 1 || transactionsForUser.Count == 0 ? "s" : "")}.");
+            
+            foreach (Transaction transaction in transactionsForUser)
+                Console.WriteLine($"    {transaction}");
         }
 
         public void DisplayTooManyArgumentsError(string[] command)

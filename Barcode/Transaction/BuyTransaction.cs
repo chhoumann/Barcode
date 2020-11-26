@@ -46,7 +46,7 @@ namespace Barcode
         {
             return $"{Date} - #{Id} | User: {User.FirstName} - " +
                    "Purchase " + (Succeeded ? "success" : "failed") +
-                   $" for {AmountPurchased}x {Product.Name} for {Amount}";
+                   $" for {AmountPurchased}x {Product.Name} for {Amount} credits";
         }
     }
 }

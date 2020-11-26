@@ -1,0 +1,13 @@
+26-Nov-20 10:47:58 PM - #0 | Insert 1 into ndavo's balance. New balance: 40001
+26-Nov-20 10:48:32 PM - #1 | Insert 1 into ndavo's balance. New balance: 40002
+26-Nov-20 10:52:49 PM - #0 | Insert 10 into ndavo's balance. New balance: 40010
+26-Nov-20 10:53:07 PM - #0 | Insert 10 into ndavo's balance. New balance: 40010
+26-Nov-20 10:53:07 PM - #0 | Insert 10 into ndavo's balance. New balance: 40000
+26-Nov-20 10:53:44 PM - #1 | Insert 10 into ndavo's balance. New balance: 40010
+26-Nov-20 11:18:30 PM - #0 | User: Nancy - Purchase success for 1x Diverse for 100
+26-Nov-20 11:18:32 PM - #1 | User: Nancy - Purchase success for 1x ½L Letmælk for 450
+26-Nov-20 11:19:52 PM - #0 | User: Nancy - Purchase success for 1x ½L vand & kildevand excl. pant for 1200 credits
+26-Nov-20 11:21:32 PM - #0 | User: Nancy - Purchase success for 1x Diverse for 100 credits
+26-Nov-20 11:21:34 PM - #1 | User: Nancy - Purchase success for 1x Diverse for 100 credits
+26-Nov-20 11:22:35 PM - #0 | User: Nancy - Purchase success for 1x Diverse for 100 credits
+26-Nov-20 11:22:36 PM - #1 | User: Nancy - Purchase success for 1x Diverse for 100 credits

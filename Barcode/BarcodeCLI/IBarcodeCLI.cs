@@ -7,7 +7,6 @@ namespace Barcode.BarcodeCLI
     {
         void DisplayUserNotFound(string username);
         void DisplayProductNotFound(string product);
-        void DisplayUserInfo(User user);
         void DisplayTooManyArgumentsError(string[] command);
         void DisplayAdminCommandNotFoundMessage(string adminCommand);
         void DisplayUserBuysProduct(BuyTransaction transaction);
@@ -24,8 +23,8 @@ namespace Barcode.BarcodeCLI
         void DisplayUserBalanceNotification(User user);
         void DisplayProductLineup(List<Product> productLineup);
         void DisplayCommands(Dictionary<string, Action<string[]>> commands);
-        void ClearDisplay();
         void DisplayCommandLog(List<ICommand> commandsExecuted);
         IBarcodeCLI AwaitKeyPress();
+        void DisplayUserInfo(User user, List<Transaction> transactionsForUser);
     }
 }
