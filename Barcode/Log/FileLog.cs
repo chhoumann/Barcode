@@ -6,13 +6,13 @@ namespace Barcode.Log
 {
     public sealed class FileLog : ILog
     {
-        private readonly IDataStore<string> _dataStore;
+        private readonly IDataStore<string> dataStore;
 
         public FileLog()
         {
-            _dataStore = new TextFileDataStore<string>("Logs", "log.txt");
-            LogEntries = new List<string>();
-            LogEntries = _dataStore.ReadData().ToList();
+            dataStore = new TextFileDataStore<string>("Logs", "log.txt");
+
+            LogEntries = dataStore.ReadData().ToList();
         }
 
         public List<string> LogEntries { get; }
@@ -21,7 +21,7 @@ namespace Barcode.Log
         {
             LogEntries.Add(sender.ToString());
 
-            _dataStore.AppendData(new[] {sender.ToString()});
+            dataStore.AppendData(new[] {sender.ToString()});
         }
     }
 }

@@ -7,6 +7,5 @@
 
         void Execute();
         void Undo();
-        string ToString();
     }
 }

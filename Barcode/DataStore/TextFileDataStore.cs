@@ -6,20 +6,20 @@ namespace Barcode.DataStore
 {
     public sealed class TextFileDataStore<T> : FileDataStore<T>
     {
-        public TextFileDataStore(string directoryName, string fileName) : base(directoryName, fileName)
-        {
-        }
+        public TextFileDataStore(string directoryName, string fileName) : base(directoryName, fileName) { }
 
         public override IEnumerable<T> ReadData()
         {
             if (File.Exists(fullFilePath))
                 return File.ReadAllLines(fullFilePath) as IEnumerable<T>;
-
-            throw new FileNotFoundException($"{fileName} not found.");
+            return new List<T>();
         }
 
         public override void AppendData(IEnumerable<T> data)
         {
+            if (!DoesFolderExist())
+                Directory.CreateDirectory(directoryPath);
+            
             if (data is IEnumerable<string> lines)
                 File.AppendAllLines(fullFilePath, lines);
             else throw new ArgumentException();

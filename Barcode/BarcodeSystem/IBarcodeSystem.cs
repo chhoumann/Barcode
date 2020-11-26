@@ -5,9 +5,9 @@ namespace Barcode
 {
     public interface IBarcodeSystem
     {
-        IEnumerable<Product> ActiveProducts { get; }
+        List<Product> Products { get; }
         List<Transaction> Transactions { get; }
-        IEnumerable<User> Users { get; }
+        List<User> Users { get; }
         BuyTransaction BuyProduct(User user, Product product, int amountToPurchase = 1);
         InsertCashTransaction AddCreditsToAccount(User user, decimal amount);
         T ExecuteTransaction<T>(T transaction) where T : Transaction, ICommand;

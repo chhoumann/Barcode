@@ -9,18 +9,16 @@
             Command = command;
         }
 
-        protected CliCommand()
-        {
-        }
+        protected CliCommand() { }
 
         protected bool HasEnoughArguments(int amountOfArgumentsExpected)
         {
-            return Command.Length == amountOfArgumentsExpected;
+            return Command.Length >= amountOfArgumentsExpected;
         }
 
         public override string ToString()
         {
-            return string.Join(" ", Command);
+            return Command.Length == 1 ? Command[0] : string.Join(" ", Command);
         }
     }
 }

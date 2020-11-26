@@ -1,4 +1,7 @@
-﻿namespace Barcode.BarcodeCLI
+﻿using System;
+using System.Collections.Generic;
+
+namespace Barcode.BarcodeCLI
 {
     public interface IBarcodeCLI
     {
@@ -19,5 +22,10 @@
         void DisplayNotEnoughArguments(string[] command);
         void DisplayAddCreditsTransaction(InsertCashTransaction transaction);
         void DisplayUserBalanceNotification(User user);
+        void DisplayProductLineup(List<Product> productLineup);
+        void DisplayCommands(Dictionary<string, Action<string[]>> commands);
+        void ClearDisplay();
+        void DisplayCommandLog(List<ICommand> commandsExecuted);
+        IBarcodeCLI AwaitKeyPress();
     }
 }

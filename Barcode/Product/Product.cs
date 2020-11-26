@@ -4,30 +4,30 @@ namespace Barcode
 {
     public class Product
     {
-        private static uint _id = 1;
-        private string _name;
+        private static uint id = 1;
+        private string name;
 
-        public Product(string name, decimal price)
+        public Product(string name, decimal price) : this()
         {
-            Id = _id++;
             Name = name;
             Price = price;
         }
 
         public Product()
         {
+            Id = id++;
         }
-
+        
         public uint Id { get; set; }
 
         public string Name
         {
-            get => _name;
+            get => name;
             set
             {
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentException("Value cannot be null or empty.", nameof(value));
-                _name = value;
+                name = value;
             }
         }
 
@@ -37,7 +37,7 @@ namespace Barcode
 
         public override string ToString()
         {
-            return $"{nameof(Id)}: {Id}, {nameof(Name)}: {Name}, {nameof(Price)}: {Price}";
+            return $"#{Id} {Name} {Price} credits";
         }
     }
 }

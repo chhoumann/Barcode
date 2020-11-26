@@ -43,6 +43,7 @@ namespace Barcode.Controller.Commands.UserCommands
                             BuyTransaction transaction = barcodeSystem.BuyProduct(user, product, amountToPurchase);
 
                             this.transaction = transaction;
+                            Succeeded = transaction.Succeeded;
 
                             barcodeCli.DisplayUserBuysProduct(transaction);
                         }
@@ -61,7 +62,6 @@ namespace Barcode.Controller.Commands.UserCommands
                 barcodeCli.DisplayUserNotFound(username);
             }
 
-            Succeeded = transaction.Succeeded;
             base.Execute();
         }
 

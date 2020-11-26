@@ -9,9 +9,7 @@ namespace Barcode
             CommandFired?.Invoke(this);
         }
 
-        public virtual void Undo()
-        {
-        }
+        public virtual void Undo() { }
 
         public bool Succeeded { get; private protected set; }
         public bool Undone { get; private protected set; }

@@ -25,24 +25,50 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Commands redo &amp; undo. Refactor commands.">
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" afterDir="false" />
+    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Finish command refactor.">
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ClearCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayAllProductsCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayCommandLogCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/HelpCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayProductLineupCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/DataCopy/products.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/DataCopy/users.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCli.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeSystem/IBarcodeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/IBarcodeSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Command.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetActiveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetActiveState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCreditState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCreditState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/DataStore/FileDataStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/DataStore/FileDataStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/DataStore/IDataStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/DataStore/IDataStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/DataStore/TextFileDataStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/DataStore/TextFileDataStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/ICommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/ICommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Log/FileLog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Log/FileLog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Product/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Product/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Product/SeasonalProduct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Product/SeasonalProduct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/User/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/User/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Data/products.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Data/users.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,39 +82,32 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/259/RuntimeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/39/String.Searching.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/C6/Span.Fast.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/328/FileStream.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/32F/Path.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/58/ArgumentException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/38/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/27/Select.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3294A405-33A5-4510-A2B8-2FF3AA301412/F/EmailAddressAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6D13C30E-8D2C-4F45-8A43-BA680CD6B33D/23/File.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/57/3b077fe3/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/336/StreamWriter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/329/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/37/String.Comparison.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/328/FileStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/32F/Path.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/3D5/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/9A/MemoryExtensions.Fast.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/36/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/47/Utilities.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3294A405-33A5-4510-A2B8-2FF3AA301412/F/EmailAddressAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/3DC/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/E2/UInt32.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6D13C30E-8D2C-4F45-8A43-BA680CD6B33D/23/File.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/42F9CCC8-A8E2-4583-8562-AC6B7554193A/4/Console.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/19/First.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/57/3b077fe3/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/CB/SpanHelpers.Char.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/336/StreamWriter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/329/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Barcode/Transaction.cs" />
-        <option value="$PROJECT_DIR$/BarcodeTests/UserTests.cs" />
-        <option value="$PROJECT_DIR$/BarcodeTests/ProductTests.cs" />
-        <option value="$PROJECT_DIR$/BarcodeTests/TransactionTests/TransactionTests.cs" />
-        <option value="$PROJECT_DIR$/BarcodeTests/TransactionTests/InsertCashTransaction.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Exceptions/InvalidUsernameException.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Exceptions/InvalidEmailException.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Exceptions/InsufficientCreditsException.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Product/SeasonalProduct.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/ProductTests/ProductTests.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/ProductTests/SeasonalProductTests.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/UserTests/UserTests.cs" />
@@ -99,38 +118,47 @@
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/ILog.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/DataStoreTests/FileDataStoreTests.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/DataStoreTests/TextFileDataStoreTests.cs" />
-        <option value="$PROJECT_DIR$/Barcode/DataStore/IDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Log/FileLog.cs" />
-        <option value="$PROJECT_DIR$/Barcode/DataStore/TextFileDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/DataStore/FileDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Product/Product.cs" />
-        <option value="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeController/BarcodeController.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Program.cs" />
         <option value="$PROJECT_DIR$/Barcode/Exceptions/ProductNotFoundException.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/IBarcodeSystem.cs" />
-        <option value="$PROJECT_DIR$/Barcode/ICommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/User/Email.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" />
-        <option value="$PROJECT_DIR$/Barcode/DataStore/CsvFileDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
-        <option value="$PROJECT_DIR$/Barcode/User/User.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Command.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProduct.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/Close.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/CloseCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/PrintUserCommand.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/User/User.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Product/SeasonalProduct.cs" />
+        <option value="$PROJECT_DIR$/Barcode/ICommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/HelpCommand.cs" />
+        <option value="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" />
+        <option value="$PROJECT_DIR$/Barcode/DataStore/TransactionCsvFileDataStore.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayAllProductsCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayProductLineupCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ClearCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Product/Product.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayCommandLogCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Command.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/DataStore/IDataStore.cs" />
+        <option value="$PROJECT_DIR$/Barcode/DataStore/CsvFileDataStore.cs" />
+        <option value="$PROJECT_DIR$/Barcode/DataStore/TextFileDataStore.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Log/FileLog.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" />
+        <option value="$PROJECT_DIR$/Barcode/DataStore/ProductCsvFileDataStore.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Program.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCli.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" />
+        <option value="$PROJECT_DIR$/Barcode/DataStore/FileDataStore.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
       </list>
     </option>
   </component>
@@ -144,8 +172,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34987384" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29983178" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34997028" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.29976234" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -198,7 +226,9 @@
       <workItem from="1606074108771" duration="12328000" />
       <workItem from="1606116982819" duration="1763000" />
       <workItem from="1606138318496" duration="5409000" />
-      <workItem from="1606317908357" duration="19721000" />
+      <workItem from="1606317908357" duration="19905000" />
+      <workItem from="1606380315715" duration="769000" />
+      <workItem from="1606403779974" duration="12876000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring. Move email to emai">
       <created>1605871067981</created>
@@ -277,35 +307,26 @@
       <option name="project" value="LOCAL" />
       <updated>1606348189984</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Finish command refactor.">
+      <created>1606350468800</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606350468800</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnitTestsCoverage.Settings">
-    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="coveragePercentColumnWidth" value="96" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="499" />
+    <option name="symbolColumnWidth" value="305" />
     <coverage-tree-state>
-      <expand>
-        <path>
-          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 43% 551/965" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-        </path>
-        <path>
-          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 43% 551/965" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 27% 549/747" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-        </path>
-        <path>
-          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 43% 551/965" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 27% 549/747" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 27% 549/747" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-        </path>
-      </expand>
+      <expand />
       <select />
     </coverage-tree-state>
   </component>
@@ -336,7 +357,8 @@
     <MESSAGE value="Add CLI &amp; Controller" />
     <MESSAGE value="Add most commands" />
     <MESSAGE value="Commands redo &amp; undo. Refactor commands." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commands redo &amp; undo. Refactor commands." />
+    <MESSAGE value="Finish command refactor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish command refactor." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1692" y="566" width="629" height="550" key="#Vim_Emulation" timestamp="1605825607779">
@@ -351,6 +373,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1626" y="371" width="498" height="658" key="#xdebugger.XInspectDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605994371487" />
+    <state x="1597" y="524" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1606409826881">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1597" y="524" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.3440.1400@0.0.3440.1400" timestamp="1606409826881" />
     <state x="779" y="602" key="Github.ShareDialog" timestamp="1605869722112">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -359,86 +385,86 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="643" y="322" key="Github.UntrackedFilesDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605869739891" />
-    <state width="2409" height="360" key="GridCell.Tab.0.bottom" timestamp="1606349785627">
+    <state width="3397" height="360" key="GridCell.Tab.0.bottom" timestamp="1606426473753">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
-    <state width="2409" height="360" key="GridCell.Tab.0.center" timestamp="1606349785627">
+    <state width="3397" height="360" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606426473753" />
+    <state width="3397" height="360" key="GridCell.Tab.0.center" timestamp="1606426473753">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
-    <state width="2409" height="360" key="GridCell.Tab.0.left" timestamp="1606349785627">
+    <state width="3397" height="360" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606426473753" />
+    <state width="3397" height="360" key="GridCell.Tab.0.left" timestamp="1606426473753">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
-    <state width="2409" height="360" key="GridCell.Tab.0.right" timestamp="1606349785627">
+    <state width="3397" height="360" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606426473753" />
+    <state width="3397" height="360" key="GridCell.Tab.0.right" timestamp="1606426473753">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
-    <state width="2409" height="450" key="GridCell.Tab.1.bottom" timestamp="1606342251858">
+    <state width="3397" height="360" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606426473753" />
+    <state width="3397" height="450" key="GridCell.Tab.1.bottom" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251858" />
-    <state width="2409" height="450" key="GridCell.Tab.1.center" timestamp="1606342251858">
+    <state width="3397" height="450" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.1.center" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251858" />
-    <state width="2409" height="450" key="GridCell.Tab.1.left" timestamp="1606342251858">
+    <state width="3397" height="450" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.1.left" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251858" />
-    <state width="2409" height="450" key="GridCell.Tab.1.right" timestamp="1606342251858">
+    <state width="3397" height="450" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.1.right" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251858" />
-    <state width="2409" height="450" key="GridCell.Tab.2.bottom" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.2.bottom" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.2.center" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.2.center" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.2.left" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.2.left" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.2.right" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.2.right" timestamp="1606421487718">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.3.bottom" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
+    <state width="3397" height="450" key="GridCell.Tab.3.bottom" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.3.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.3.center" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.3.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.3.center" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.3.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.3.left" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.3.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.3.left" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.3.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.3.right" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.3.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.3.right" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.3.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.4.bottom" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.3.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.4.bottom" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.4.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.4.center" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.4.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.4.center" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.4.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.4.left" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.4.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.4.left" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.4.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
-    <state width="2409" height="450" key="GridCell.Tab.4.right" timestamp="1606342251859">
+    <state width="3397" height="450" key="GridCell.Tab.4.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.4.right" timestamp="1606421487719">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="450" key="GridCell.Tab.4.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606342251859" />
+    <state width="3397" height="450" key="GridCell.Tab.4.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
     <state x="1132" y="459" key="LayersDialog" timestamp="1606334581928">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -447,10 +473,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="589" y="295" key="Rider.ProjectTemplateDialog.Size/0.0.3440.1400@0.0.3440.1400" timestamp="1605804612835" />
-    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1606350016709">
+    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1606419877447">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606350016709" />
+    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606419877447" />
     <state x="1527" y="326" key="RollbackChangesDialog" timestamp="1605902805213">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -459,14 +485,14 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1316" y="403" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1606334749418" />
-    <state x="719" y="100" width="2269" height="1207" key="VCS.FileHistoryDialog" timestamp="1606338956990">
+    <state x="719" y="100" width="2269" height="1207" key="VCS.FileHistoryDialog" timestamp="1606425103561">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="719" y="100" width="2269" height="1207" key="VCS.FileHistoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606338956990" />
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1606348193010">
+    <state x="719" y="100" width="2269" height="1207" key="VCS.FileHistoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606425103561" />
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1606350472676">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1606348193010" />
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1606350472676" />
     <state width="1728" height="708" key="XDebugger.FullValuePopup" timestamp="1605993834069">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -483,9 +509,9 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1376" y="330" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1605994648904" />
-    <state x="523" y="320" width="672" height="678" key="search.everywhere.popup" timestamp="1606140004512">
+    <state x="523" y="320" width="672" height="678" key="search.everywhere.popup" timestamp="1606418841636">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="523" y="320" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1606140004512" />
+    <state x="523" y="320" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1606418841636" />
   </component>
 </project>

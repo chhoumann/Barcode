@@ -9,36 +9,25 @@ namespace Barcode.DataStore
         private protected readonly string rootDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
         private protected string directoryName;
         private protected string fileName;
+        private protected string directoryPath;
+        
+        public string fullFilePath { get; }
 
         public FileDataStore(string directoryName, string fileName)
         {
             this.directoryName = directoryName;
             this.fileName = fileName;
+            directoryPath = Path.Combine(rootDirectoryPath, directoryName);
             fullFilePath = Path.Combine(rootDirectoryPath, directoryName, fileName);
-            CreateFile();
         }
-
-        public string fullFilePath { get; }
-
-        public virtual IEnumerable<T> ReadData()
-        {
-            throw new NotImplementedException();
-        }
+        
+        public abstract IEnumerable<T> ReadData();
 
         public virtual void AppendData(IEnumerable<T> data)
         {
             throw new NotImplementedException();
         }
 
-        private protected void CreateFile()
-        {
-            string directoryPath = Path.Combine(rootDirectoryPath, directoryName);
-
-            if (!Directory.Exists(directoryPath))
-                Directory.CreateDirectory(directoryPath);
-
-            if (!File.Exists(fullFilePath))
-                File.Create(fullFilePath);
-        }
+        private protected bool DoesFolderExist() => Directory.Exists(directoryPath);
     }
 }

@@ -92,11 +92,8 @@ namespace BarcodeTests
             BarcodeSystem barcodeSystem = Substitute.For<BarcodeSystem>(log);
             Product product = Substitute.For<Product>(productArgs);
             product.Active = true;
-            barcodeSystem.ActiveProducts =
-                new[]
-                {
-                    product
-                }; // TODO: If you simply used the interface, you wouldn't have to make all this shit public.
+            barcodeSystem.Products =
+                new List<Product>() {product}; // TODO: If you simply used the interface, you wouldn't have to make all this shit public.
 
             Product foundProduct = barcodeSystem.GetProductById(product.Id);
 

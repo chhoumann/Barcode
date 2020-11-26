@@ -6,5 +6,6 @@ namespace Barcode.DataStore
     {
         IEnumerable<T> ReadData();
         void AppendData(IEnumerable<T> data);
+        string fullFilePath { get; }
     }
 }

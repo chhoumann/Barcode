@@ -1,16 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Barcode.BarcodeCLI
 {
-    public class BarcodeCLI : IBarcodeCLI
+    public class BarcodeCli : IBarcodeCLI
     {
-        private IBarcodeSystem _barcodeSystem;
+        public event BarcodeEvent CommandEntered;
+        
         private bool alive = true;
-
-        public BarcodeCLI(IBarcodeSystem barcodeSystem)
-        {
-            _barcodeSystem = barcodeSystem;
-        }
 
         public void DisplayUserNotFound(string username)
         {
@@ -88,16 +85,59 @@ namespace Barcode.BarcodeCLI
             Console.WriteLine($"User {user.Username} has a low balance: {user.Balance} credits");
         }
 
-        public void Start()
+        public void DisplayProductLineup(List<Product> productLineup)
         {
-            Console.WriteLine("Welcome to the BarCode system.");
-            while (alive)
-            {
-                Console.Write(" > ");
-                CommandEntered?.Invoke(Console.ReadLine());
-            }
+            foreach (Product product in productLineup)
+                Console.WriteLine(product);
         }
 
-        public event BarcodeEvent CommandEntered;
+        public void ClearDisplay()
+        {
+            Console.Clear();
+        }
+
+        public void DisplayCommands(Dictionary<string, Action<string[]>> commands)
+        {
+            Console.WriteLine("Here are the available commands: ");
+            foreach (string command in commands.Keys)
+                Console.WriteLine($"    {command}");
+        }
+
+        public void DisplayCommandLog(List<ICommand> commandsExecuted)
+        {
+            Console.WriteLine($"The following {commandsExecuted.Count} commands have been executed:\n");
+            foreach (ICommand command in commandsExecuted) 
+                Console.WriteLine($"    {command}");
+        }
+        
+        public IBarcodeCLI AwaitKeyPress()
+        {
+            Console.WriteLine("\n" +
+                              "Please press a key to continue...");
+            Console.ReadKey();
+
+            return this;
+        }
+
+        private string GetUserCommandInput() => Console.ReadLine();
+        
+        public void Start()
+        {
+            while (alive)
+            {
+                ClearDisplay();
+                
+                Console.WriteLine("Welcome to the BarCode system." +
+                                  "\n" +
+                                  "Write \"help\" to see user commands or \":help\" to see admin commands.");
+                
+                
+                Console.Write(" > ");
+
+                CommandEntered?.Invoke(GetUserCommandInput());
+
+                AwaitKeyPress();
+            }
+        }
     }
 }

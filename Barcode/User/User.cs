@@ -7,12 +7,12 @@ namespace Barcode
     public class User : IComparable
     {
         private const decimal balanceNotificationThreshold = 50m;
+
         private static uint userIdTracker;
-        private decimal balance;
         private readonly Email email;
+        private decimal balance;
         private string firstName;
         private string lastName;
-
         private string username;
 
         public User()
@@ -93,9 +93,9 @@ namespace Barcode
 
         public override string ToString()
         {
-            return $"{firstName} {lastName} - {username} | #{Id}" +
+            return $"{FirstName} {LastName} - {Username} | #{Id}" +
                    "\n" +
-                   $"{email}" +
+                   $"{Email}" +
                    "\n" +
                    $"Balance: {Balance} credits";
         }

@@ -33,10 +33,15 @@
           <e p="Commands" t="Include">
             <e p="AdminCommands" t="Include">
               <e p="AddCreditToUser.cs" t="Include" />
+              <e p="ClearCommand.cs" t="Include" />
+              <e p="DisplayAllProductsCommand.cs" t="Include" />
+              <e p="DisplayCommandLogCommand.cs" t="Include" />
             </e>
             <e p="CloseCommand.cs" t="Include" />
+            <e p="HelpCommand.cs" t="Include" />
             <e p="UserCommands" t="Include">
               <e p="BuyProductCommand.cs" t="Include" />
+              <e p="DisplayProductLineupCommand.cs" t="Include" />
               <e p="DisplayUserInfoCommand.cs" t="Include" />
               <e p="ProductSet" t="Include">
                 <e p="ProductSetActiveState.cs" t="Include" />
@@ -45,6 +50,10 @@
               </e>
             </e>
           </e>
+        </e>
+        <e p="Data" t="Include">
+          <e p="products.csv" t="Include" />
+          <e p="users.csv" t="Include" />
         </e>
         <e p="DataStore" t="Include">
           <e p="CsvFileDataStore.cs" t="Include" />

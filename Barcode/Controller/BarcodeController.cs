@@ -5,20 +5,18 @@ using Barcode.Controller.Commands;
 using Barcode.Controller.Commands.AdminCommands;
 using Barcode.Controller.Commands.UserCommands;
 using Barcode.Controller.Commands.UserCommands.ProductSet;
-using Barcode.Exceptions;
 using Microsoft.VisualBasic;
 
 namespace Barcode.Controller
 {
     public class BarcodeController
     {
-        private readonly Dictionary<string, Action<string[]>>
-            adminCommands = new Dictionary<string, Action<string[]>>();
-
         private readonly IBarcodeCLI barcodeCli;
         private readonly IBarcodeSystem barcodeSystem;
         private readonly List<ICommand> commandsExecuted = new List<ICommand>();
         private readonly Dictionary<string, Action<string[]>> userCommands = new Dictionary<string, Action<string[]>>();
+        private readonly Dictionary<string, Action<string[]>>
+                    adminCommands = new Dictionary<string, Action<string[]>>();
 
         public BarcodeController(IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem)
         {
@@ -31,14 +29,15 @@ namespace Barcode.Controller
             this.barcodeCli.CommandEntered += ParseCommand;
             User.UserBalanceNotification += barcodeCli.DisplayUserBalanceNotification;
             Command.CommandFired += SetLastCommandFired;
-
-            this.barcodeCli.Start();
         }
 
-        private void SetLastCommandFired(ICommand command)
+        public BarcodeController Start()
         {
-            commandsExecuted.Add(command);
+            barcodeCli.Start();
+            return this;
         }
+
+        private void SetLastCommandFired(ICommand command) => commandsExecuted.Add(command);
 
         private void ParseCommand(string inputCommand)
         {
@@ -85,25 +84,17 @@ namespace Barcode.Controller
                 barcodeCli.DisplayAdminCommandNotFoundMessage(string.Join(" ", command));
         }
 
-        private void TryPrintUser(string username)
-        {
-            try
-            {
-                User user = barcodeSystem.GetUserByUsername(username);
-                barcodeCli.DisplayUserInfo(user);
-            }
-            catch (UserNotFoundException)
-            {
-                barcodeCli.DisplayUserNotFound(username);
-            }
-        }
-
-
         private void AddUserCommandsToDictionary(Dictionary<string, Action<string[]>> commandDictionary)
         {
             commandDictionary["close"] = command => new CloseCommand(barcodeCli).Execute();
+            
             commandDictionary["undo"] = command => UndoLastCommand();
             commandDictionary["redo"] = command => RedoLastCommand();
+            
+            commandDictionary["help"] = command => new HelpCommand(commandDictionary, barcodeCli).Execute();
+            
+            commandDictionary["products"] = command =>
+                new DisplayProductLineupCommand(command, barcodeCli, barcodeSystem).Execute();
         }
 
         private void AddAdminCommandsToDictionary(Dictionary<string, Action<string[]>> adminCommandDictionary)
@@ -125,6 +116,16 @@ namespace Barcode.Controller
 
             adminCommandDictionary[":addcredits"] = command => new
                 AddCreditToUser(command, barcodeCli, barcodeSystem).Execute();
+            
+            adminCommandDictionary[":allproducts"] = command =>
+                new DisplayAllProductsCommand(command, barcodeCli, barcodeSystem).Execute();
+
+            adminCommandDictionary[":help"] = command => new
+                HelpCommand(adminCommandDictionary, barcodeCli).Execute();
+            
+            adminCommandDictionary[":clear"] = command => new ClearCommand(barcodeCli).Execute();
+
+            adminCommandDictionary[":commandlog"] = command => new DisplayCommandLogCommand(commandsExecuted, barcodeCli).Execute();
         }
 
         private void UndoLastCommand()

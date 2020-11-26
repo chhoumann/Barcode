@@ -11,3 +11,5 @@ D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.csp
 D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.dll
 D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.pdb
 D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\obj\Debug\netcoreapp3.1\Barcode.genruntimeconfig.cache
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Data\products.csv
+D:\Mapper\Tools\Dev\Projects\Barcode\Barcode\bin\Debug\netcoreapp3.1\Data\users.csv

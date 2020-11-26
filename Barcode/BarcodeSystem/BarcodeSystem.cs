@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Barcode.BarcodeCLI;
 using Barcode.DataStore;
 using Barcode.Exceptions;
 using Barcode.Log;
@@ -10,19 +11,21 @@ namespace Barcode
     public class BarcodeSystem : IBarcodeSystem
     {
         private readonly ILog log;
+        private readonly IBarcodeCLI barcodeCli;
         private IDataStore<Product> productDataStore;
         private IDataStore<User> userDataStore;
 
-        public BarcodeSystem(ILog log)
+        public BarcodeSystem(ILog log, IBarcodeCLI barcodeCli)
         {
             this.log = log;
+            this.barcodeCli = barcodeCli;
             Transaction.LogTransaction += this.log.AddLogEntry;
         }
 
-        public IEnumerable<Product> ActiveProducts { get; set; }
+        public List<Product> Products { get; set; }
 
         public List<Transaction> Transactions { get; } = new List<Transaction>();
-        public IEnumerable<User> Users { get; private set; } = new List<User>();
+        public List<User> Users { get; private set; } = new List<User>();
 
         public BuyTransaction BuyProduct(User user, Product product, int amountToPurchase = 1)
         {
@@ -57,7 +60,7 @@ namespace Barcode
         {
             try
             {
-                return ActiveProducts.First(p => p.Id.Equals(id));
+                return Products.First(p => p.Id.Equals(id));
             }
             catch
             {
@@ -101,19 +104,50 @@ namespace Barcode
         public BarcodeSystem AddProductDataStore(IDataStore<Product> productDataStore)
         {
             this.productDataStore = productDataStore;
-            IEnumerable<Product> productStore = this.productDataStore.ReadData();
-
-            ActiveProducts = productStore.ToList();
-
+            
+            try
+            {
+                IEnumerable<Product> productStore = this.productDataStore.ReadData();
+                Products = productStore.ToList();
+            }
+            catch
+            {
+                barcodeCli.DisplayGeneralError("Product data store not loaded." +
+                                               "\n" +
+                                               "Please make sure that you have provided the correct data." +
+                                               "\n" +
+                                               "Could not find:" +
+                                               "\n" +
+                                               $"{this.productDataStore.fullFilePath}");
+                
+                barcodeCli.AwaitKeyPress().Close();
+            }
+            
             return this;
         }
 
         public BarcodeSystem AddUserDataStore(IDataStore<User> userDataStore)
         {
             this.userDataStore = userDataStore;
-            IEnumerable<User> userStore = this.userDataStore.ReadData();
+            
+            try
+            {
+                IEnumerable<User> userStore = this.userDataStore.ReadData();
 
-            Users = userStore.ToList();
+                Users = userStore.ToList();
+            }
+            catch
+            {
+                barcodeCli.DisplayGeneralError("Data store not loaded." +
+                                               "\n" +
+                                               "Please make sure that you have provided the correct data." +
+                                               "\n" +
+                                               "Could not find:" +
+                                               "\n" +
+                                               $"{this.userDataStore.fullFilePath}");
+                
+                barcodeCli.AwaitKeyPress().Close();
+            }
 
             return this;
         }
