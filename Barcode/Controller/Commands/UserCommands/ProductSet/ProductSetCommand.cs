@@ -2,15 +2,16 @@
 using Barcode.BarcodeCLI;
 using Barcode.Exceptions;
 
-namespace Barcode.Controller.Commands.UserCommands
+namespace Barcode.Controller.Commands.UserCommands.ProductSet
 {
     public abstract class ProductSetCommand : CliCommand
     {
-        private protected Product product;
-        private protected IBarcodeSystem barcodeSystem;
         private protected IBarcodeCLI barcodeCli;
+        private protected IBarcodeSystem barcodeSystem;
+        private protected Product product;
 
-        protected ProductSetCommand(string[] command, IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem) : base(command)
+        protected ProductSetCommand(string[] command, IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem) :
+            base(command)
         {
             this.barcodeCli = barcodeCli;
             this.barcodeSystem = barcodeSystem;
@@ -28,7 +29,7 @@ namespace Barcode.Controller.Commands.UserCommands
 
             try
             {
-                var productId = Convert.ToUInt32(productIdString);
+                uint productId = Convert.ToUInt32(productIdString);
                 product = barcodeSystem.GetProductById(productId);
             }
             catch (ProductNotFoundException)
@@ -39,7 +40,7 @@ namespace Barcode.Controller.Commands.UserCommands
             {
                 barcodeCli.DisplayGeneralError(e.ToString());
             }
-            
+
             return true;
         }
     }

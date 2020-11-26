@@ -20,7 +20,7 @@ namespace BarcodeTests.ProductTests
         public void SeasonStartDate_SetToDateTimeNow_Succeeds()
         {
             SeasonalProduct seasonalProduct = Substitute.For<SeasonalProduct>("Product", 1m);
-            
+
             seasonalProduct.SeasonStartDate = DateTime.Now;
 
             Assert.That(seasonalProduct.SeasonStartDate, Is.Not.Null);
@@ -29,11 +29,11 @@ namespace BarcodeTests.ProductTests
         [Test]
         public void SeasonEndDate_SetToDateTimeNow_Succeeds()
         {
-             SeasonalProduct seasonalProduct = Substitute.For<SeasonalProduct>("Product", 1m);
-             
-             seasonalProduct.SeasonEndDate= DateTime.Now;
- 
-             Assert.That(seasonalProduct.SeasonEndDate, Is.Not.Null);           
-        } 
+            SeasonalProduct seasonalProduct = Substitute.For<SeasonalProduct>("Product", 1m);
+
+            seasonalProduct.SeasonEndDate = DateTime.Now;
+
+            Assert.That(seasonalProduct.SeasonEndDate, Is.Not.Null);
+        }
     }
 }

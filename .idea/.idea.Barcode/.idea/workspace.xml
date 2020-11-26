@@ -25,41 +25,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Add most commands">
-      <change afterPath="$PROJECT_DIR$/Barcode/Command.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/CloseCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetActiveState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCreditState.cs" afterDir="false" />
+    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Commands redo &amp; undo. Refactor commands.">
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/ICommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/ICommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetActiveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetActiveState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCreditState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCreditState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/ITransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/ITransaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/User/Email.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/User/Email.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/User/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/User/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/bin/Debug/netcoreapp3.1/BarcodeTests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BarcodeTests/obj/Debug/netcoreapp3.1/BarcodeTests.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +80,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BarcodeTests/UnitTest1.cs" />
-        <option value="$PROJECT_DIR$/Barcode/SeasonalProduct.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Product.cs" />
-        <option value="$PROJECT_DIR$/Barcode/User.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/UserTests.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/ProductTests.cs" />
@@ -131,22 +110,27 @@
         <option value="$PROJECT_DIR$/Barcode/Exceptions/ProductNotFoundException.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/IBarcodeSystem.cs" />
         <option value="$PROJECT_DIR$/Barcode/ICommand.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/CloseCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/User/Email.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/TransactionTests.cs" />
         <option value="$PROJECT_DIR$/Barcode/DataStore/CsvFileDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
         <option value="$PROJECT_DIR$/Barcode/User/User.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Command.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSetCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProduct.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/Close.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/CloseCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/PrintUserCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" />
       </list>
     </option>
   </component>
@@ -214,7 +198,7 @@
       <workItem from="1606074108771" duration="12328000" />
       <workItem from="1606116982819" duration="1763000" />
       <workItem from="1606138318496" duration="5409000" />
-      <workItem from="1606317908357" duration="17599000" />
+      <workItem from="1606317908357" duration="19721000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring. Move email to emai">
       <created>1605871067981</created>
@@ -286,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606152369002</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Commands redo &amp; undo. Refactor commands.">
+      <created>1606348189984</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606348189984</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,18 +292,18 @@
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 43% 543/957" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 43% 551/965" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 43% 543/957" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 27% 541/739" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 43% 551/965" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Barcode 27% 549/747" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 43% 543/957" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 27% 541/739" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Barcode 27% 541/739" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 43% 551/965" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Barcode 27% 549/747" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Barcode 27% 549/747" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />
@@ -344,7 +335,8 @@
     <MESSAGE value="Finish part 1. Add product catalogue parser &amp; reader." />
     <MESSAGE value="Add CLI &amp; Controller" />
     <MESSAGE value="Add most commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add most commands" />
+    <MESSAGE value="Commands redo &amp; undo. Refactor commands." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commands redo &amp; undo. Refactor commands." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1692" y="566" width="629" height="550" key="#Vim_Emulation" timestamp="1605825607779">
@@ -367,22 +359,22 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="643" y="322" key="Github.UntrackedFilesDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605869739891" />
-    <state width="2409" height="360" key="GridCell.Tab.0.bottom" timestamp="1606347813731">
+    <state width="2409" height="360" key="GridCell.Tab.0.bottom" timestamp="1606349785627">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606347813731" />
-    <state width="2409" height="360" key="GridCell.Tab.0.center" timestamp="1606347813731">
+    <state width="2409" height="360" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
+    <state width="2409" height="360" key="GridCell.Tab.0.center" timestamp="1606349785627">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606347813731" />
-    <state width="2409" height="360" key="GridCell.Tab.0.left" timestamp="1606347813731">
+    <state width="2409" height="360" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
+    <state width="2409" height="360" key="GridCell.Tab.0.left" timestamp="1606349785627">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606347813731" />
-    <state width="2409" height="360" key="GridCell.Tab.0.right" timestamp="1606347813731">
+    <state width="2409" height="360" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
+    <state width="2409" height="360" key="GridCell.Tab.0.right" timestamp="1606349785627">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2409" height="360" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606347813731" />
+    <state width="2409" height="360" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606349785627" />
     <state width="2409" height="450" key="GridCell.Tab.1.bottom" timestamp="1606342251858">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -455,10 +447,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="589" y="295" key="Rider.ProjectTemplateDialog.Size/0.0.3440.1400@0.0.3440.1400" timestamp="1605804612835" />
-    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1606347093553">
+    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1606350016709">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606347093553" />
+    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606350016709" />
     <state x="1527" y="326" key="RollbackChangesDialog" timestamp="1605902805213">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -471,10 +463,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="719" y="100" width="2269" height="1207" key="VCS.FileHistoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606338956990" />
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1606153127220">
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1606348193010">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1606153127220" />
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1606348193010" />
     <state width="1728" height="708" key="XDebugger.FullValuePopup" timestamp="1605993834069">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

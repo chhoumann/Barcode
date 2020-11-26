@@ -4,14 +4,18 @@ namespace Barcode
 {
     public abstract class Transaction : Command, ITransaction, ILoggable<ITransaction>
     {
-        public static event Action<Transaction> LogTransaction;
-        private static uint _idTracker = 0;
-        private uint _id;
+        private static uint _idTracker;
 
-        public uint Id
+        public Transaction(User user, decimal amount)
         {
-            get => _id;
+            User = user;
+            Amount = amount;
+            Id = _idTracker++;
+            Date = DateTime.Now;
+            Undone = false;
         }
+
+        public uint Id { get; }
 
         public User User { get; set; }
         public DateTime Date { get; set; }
@@ -19,19 +23,12 @@ namespace Barcode
         public bool Succeeded { get; protected set; }
         public bool Undone { get; protected set; }
 
-        public Transaction(User user, decimal amount)
-        {
-            User = user;
-            Amount = amount;
-            _id = _idTracker++;
-            Date = DateTime.Now;
-            Undone = false;
-        }
-
         public override string ToString()
         {
             return "";
         }
+
+        public static event Action<Transaction> LogTransaction;
 
         public virtual void Execute()
         {

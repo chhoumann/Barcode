@@ -9,51 +9,32 @@ namespace Barcode
 {
     public class BarcodeSystem : IBarcodeSystem
     {
-        private ILog log;
+        private readonly ILog log;
         private IDataStore<Product> productDataStore;
         private IDataStore<User> userDataStore;
-        public IEnumerable<Product> ActiveProducts { get; set; }
 
-        public List<Transaction> Transactions { get; } = new List<Transaction>();
-        public IEnumerable<User> Users { get; private set; } = new List<User>();
-        
         public BarcodeSystem(ILog log)
         {
             this.log = log;
             Transaction.LogTransaction += this.log.AddLogEntry;
         }
 
-        public BarcodeSystem AddProductDataStore(IDataStore<Product> productDataStore)
-        {
-            this.productDataStore = productDataStore;
-            IEnumerable<Product> productStore = this.productDataStore.ReadData();
+        public IEnumerable<Product> ActiveProducts { get; set; }
 
-            ActiveProducts = productStore.ToList();
-            
-            return this;
-        }
-
-        public BarcodeSystem AddUserDataStore(IDataStore<User> userDataStore)
-        {
-            this.userDataStore = userDataStore;
-            IEnumerable<User> userStore = this.userDataStore.ReadData();
-            
-            Users = userStore.ToList();
-            
-            return this;
-        }
+        public List<Transaction> Transactions { get; } = new List<Transaction>();
+        public IEnumerable<User> Users { get; private set; } = new List<User>();
 
         public BuyTransaction BuyProduct(User user, Product product, int amountToPurchase = 1)
         {
-            var transaction = new BuyTransaction(user, product, amountToPurchase);
-            
+            BuyTransaction transaction = new BuyTransaction(user, product, amountToPurchase);
+
             return ExecuteTransaction(transaction);
         }
 
         public InsertCashTransaction AddCreditsToAccount(User user, decimal amount)
         {
-            var transaction = new InsertCashTransaction(user, amount);
-            
+            InsertCashTransaction transaction = new InsertCashTransaction(user, amount);
+
             return ExecuteTransaction(transaction);
         }
 
@@ -61,7 +42,7 @@ namespace Barcode
         {
             transaction.Execute();
             if (transaction.Succeeded) Transactions.Add(transaction);
-            
+
             return transaction;
         }
 
@@ -107,7 +88,6 @@ namespace Barcode
             {
                 throw new UserNotFoundException($"User \"{username}\" not found.");
             }
-            
         }
 
         public IEnumerable<Transaction> GetTransactionsForUser(User user, int count)
@@ -116,6 +96,26 @@ namespace Barcode
                 .Where(transaction => transaction.User.Equals(user))
                 .OrderBy(transaction => transaction.Date)
                 .Take(count);
+        }
+
+        public BarcodeSystem AddProductDataStore(IDataStore<Product> productDataStore)
+        {
+            this.productDataStore = productDataStore;
+            IEnumerable<Product> productStore = this.productDataStore.ReadData();
+
+            ActiveProducts = productStore.ToList();
+
+            return this;
+        }
+
+        public BarcodeSystem AddUserDataStore(IDataStore<User> userDataStore)
+        {
+            this.userDataStore = userDataStore;
+            IEnumerable<User> userStore = this.userDataStore.ReadData();
+
+            Users = userStore.ToList();
+
+            return this;
         }
     }
 }

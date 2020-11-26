@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Barcode;
 using Barcode.DataStore;
 using Barcode.Log;
 using NSubstitute;
-using NSubstitute.Core;
 using NUnit.Framework;
 
 namespace BarcodeTests
@@ -12,17 +10,12 @@ namespace BarcodeTests
     [TestFixture]
     public class BarcodeSystemTests
     {
-        private object[] userArgs;
-        private object[] productArgs;
-        private ILog log;
-        private IDataStore<Product> productDataStore;
-
         [SetUp]
         public void SetUp()
         {
             log = Substitute.For<ILog>();
             productDataStore = Substitute.For<IDataStore<Product>>();
-            
+
             userArgs = new object[]
             {
                 "test", "test", "test", "test@test.com"
@@ -34,6 +27,11 @@ namespace BarcodeTests
             };
         }
 
+        private object[] userArgs;
+        private object[] productArgs;
+        private ILog log;
+        private IDataStore<Product> productDataStore;
+
         [Test]
         public void BuyProduct_PurchaseWithEnoughCredit_Succeeds()
         {
@@ -42,7 +40,7 @@ namespace BarcodeTests
             Product product = Substitute.For<Product>(productArgs);
             user.Balance = 100m;
 
-            var buyTransaction = barcodeSystem.BuyProduct(user, product);
+            BuyTransaction buyTransaction = barcodeSystem.BuyProduct(user, product);
 
             Assert.That(buyTransaction.Succeeded, Is.True);
         }
@@ -53,7 +51,7 @@ namespace BarcodeTests
             BarcodeSystem barcodeSystem = Substitute.For<BarcodeSystem>(log);
             User user = Substitute.For<User>(userArgs);
 
-            var insertTransaction = barcodeSystem.AddCreditsToAccount(user, 100m);
+            InsertCashTransaction insertTransaction = barcodeSystem.AddCreditsToAccount(user, 100m);
 
             Assert.That(insertTransaction.Succeeded, Is.True);
             Assert.That(user.Balance, Is.EqualTo(100m));
@@ -68,7 +66,7 @@ namespace BarcodeTests
             Product product = Substitute.For<Product>("Milk", productPrice);
             user.Balance = productPrice;
 
-            var transaction = barcodeSystem.BuyProduct(user, product);
+            BuyTransaction transaction = barcodeSystem.BuyProduct(user, product);
             barcodeSystem.UndoTransaction(transaction);
 
             Assert.That(transaction.Undone, Is.True);
@@ -83,7 +81,7 @@ namespace BarcodeTests
             Product product = Substitute.For<Product>(productArgs);
             user.Balance = 100m;
 
-            var successfulTransaction = barcodeSystem.BuyProduct(user, product);
+            BuyTransaction successfulTransaction = barcodeSystem.BuyProduct(user, product);
 
             Assert.That(barcodeSystem.Transactions.Contains(successfulTransaction), Is.True);
         }
@@ -94,9 +92,13 @@ namespace BarcodeTests
             BarcodeSystem barcodeSystem = Substitute.For<BarcodeSystem>(log);
             Product product = Substitute.For<Product>(productArgs);
             product.Active = true;
-            barcodeSystem.ActiveProducts = new[] {product}; // TODO: If you simply used the interface, you wouldn't have to make all this shit public.
+            barcodeSystem.ActiveProducts =
+                new[]
+                {
+                    product
+                }; // TODO: If you simply used the interface, you wouldn't have to make all this shit public.
 
-            var foundProduct = barcodeSystem.GetProductById(product.Id);
+            Product foundProduct = barcodeSystem.GetProductById(product.Id);
 
             Assert.That(foundProduct, Is.EqualTo(product));
         }
@@ -153,13 +155,14 @@ namespace BarcodeTests
             Product product = Substitute.For<Product>(productArgs);
             user.Balance = 1000m;
             const int amountOfPurchases = 5;
-            
+
             for (int i = 0; i < amountOfPurchases; i++) barcodeSystem.BuyProduct(user, product);
-            var transactionsForUser = barcodeSystem.GetTransactionsForUser(user, amountOfPurchases);
+            IEnumerable<Transaction> transactionsForUser =
+                barcodeSystem.GetTransactionsForUser(user, amountOfPurchases);
 
             Assert.That(transactionsForUser, Is.Ordered.By("Date"));
         }
-        
+
         [Test]
         public void GetTransactionsForUser_ReturnsCorrectTransactions_True()
         {
@@ -168,12 +171,12 @@ namespace BarcodeTests
             Product product = Substitute.For<Product>(productArgs);
             user.Balance = 1000m;
             const int amountOfPurchases = 5;
-            
+
             for (int i = 0; i < amountOfPurchases; i++) barcodeSystem.BuyProduct(user, product);
-            var transactionsForUser = barcodeSystem.GetTransactionsForUser(user, amountOfPurchases);
+            IEnumerable<Transaction> transactionsForUser =
+                barcodeSystem.GetTransactionsForUser(user, amountOfPurchases);
 
             Assert.That(transactionsForUser, Is.All.Property("User").EqualTo(user));
-
         }
     }
 }

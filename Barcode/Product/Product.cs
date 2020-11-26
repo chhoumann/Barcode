@@ -6,6 +6,18 @@ namespace Barcode
     {
         private static uint _id = 1;
         private string _name;
+
+        public Product(string name, decimal price)
+        {
+            Id = _id++;
+            Name = name;
+            Price = price;
+        }
+
+        public Product()
+        {
+        }
+
         public uint Id { get; set; }
 
         public string Name
@@ -22,17 +34,6 @@ namespace Barcode
         public decimal Price { get; set; }
         public bool Active { get; set; }
         public bool CanBeBoughtOnCredit { get; set; }
-
-        public Product(string name, decimal price)
-        {
-            Id = _id++;
-            Name = name;
-            Price = price;
-        }
-
-        public Product()
-        {
-        }
 
         public override string ToString()
         {

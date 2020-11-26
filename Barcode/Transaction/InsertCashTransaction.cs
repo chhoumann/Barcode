@@ -2,13 +2,15 @@
 {
     public class InsertCashTransaction : Transaction
     {
-        public InsertCashTransaction(User user, decimal amount) : base(user, amount) { }
+        public InsertCashTransaction(User user, decimal amount) : base(user, amount)
+        {
+        }
 
         public override void Execute()
         {
             User.Balance += Amount;
             Succeeded = true;
-            
+
             base.Execute();
         }
 
@@ -19,7 +21,7 @@
                 User.Balance -= Amount;
                 Undone = true;
             }
-            
+
             base.Undo();
         }
 

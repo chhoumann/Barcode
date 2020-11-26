@@ -33,8 +33,8 @@ namespace BarcodeTests.ProductTests
         public void ToString_OnCall_ReturnsString()
         {
             Product product = Substitute.For<Product>("Product", 1m);
-            
-            Assert.That(product.ToString(), Is.TypeOf<String>());
+
+            Assert.That(product.ToString(), Is.TypeOf<string>());
         }
 
         [Test]

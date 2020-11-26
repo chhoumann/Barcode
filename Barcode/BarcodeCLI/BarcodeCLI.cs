@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Linq;
 
 namespace Barcode.BarcodeCLI
 {
     public class BarcodeCLI : IBarcodeCLI
     {
         private IBarcodeSystem _barcodeSystem;
-        private bool _alive = true;
-        
+        private bool alive = true;
+
         public BarcodeCLI(IBarcodeSystem barcodeSystem)
         {
             _barcodeSystem = barcodeSystem;
@@ -28,9 +27,9 @@ namespace Barcode.BarcodeCLI
             Console.WriteLine(user.ToString());
         }
 
-        public void DisplayTooManyArgumentsError(string command)
+        public void DisplayTooManyArgumentsError(string[] command)
         {
-            Console.WriteLine($"Too many arguments in command: {command}");
+            Console.WriteLine($"Too many arguments in command: {string.Join(" ", command)}");
         }
 
         public void DisplayAdminCommandNotFoundMessage(string adminCommand)
@@ -50,7 +49,7 @@ namespace Barcode.BarcodeCLI
 
         public void Close()
         {
-            _alive = false;
+            alive = false;
         }
 
         public void DisplayInsufficientCash(User user, Product product)
@@ -75,12 +74,13 @@ namespace Barcode.BarcodeCLI
 
         public void DisplayProductOnCreditChange(Product product)
         {
-            Console.WriteLine($"{product.Name} is now {(product.CanBeBoughtOnCredit ? "able" : "unable")} to be bought on credit.");
+            Console.WriteLine(
+                $"{product.Name} is now {(product.CanBeBoughtOnCredit ? "able" : "unable")} to be bought on credit.");
         }
 
         public void DisplayNotEnoughArguments(string[] command)
         {
-            Console.WriteLine($"Not enough arguments in command: {String.Join(" ", command)}");
+            Console.WriteLine($"Not enough arguments in command: {string.Join(" ", command)}");
         }
 
         public void DisplayUserBalanceNotification(User user)
@@ -90,8 +90,8 @@ namespace Barcode.BarcodeCLI
 
         public void Start()
         {
-            Console.WriteLine($"Welcome to the BarCode system.");
-            while (_alive)
+            Console.WriteLine("Welcome to the BarCode system.");
+            while (alive)
             {
                 Console.Write(" > ");
                 CommandEntered?.Invoke(Console.ReadLine());

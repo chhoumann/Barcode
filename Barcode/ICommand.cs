@@ -2,11 +2,11 @@
 {
     public interface ICommand
     {
-        
-        void Execute();
-        void Undo();
         bool Succeeded { get; }
         bool Undone { get; }
+
+        void Execute();
+        void Undo();
         string ToString();
     }
 }

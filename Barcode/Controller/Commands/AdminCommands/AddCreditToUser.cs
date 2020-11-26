@@ -1,13 +1,12 @@
-﻿using System;
-using Barcode.BarcodeCLI;
+﻿using Barcode.BarcodeCLI;
 using Barcode.Exceptions;
 
 namespace Barcode.Controller.Commands.AdminCommands
 {
     public class AddCreditToUser : CliCommand
     {
-        private IBarcodeCLI barcodeCli;
-        private IBarcodeSystem barcodeSystem;
+        private readonly IBarcodeCLI barcodeCli;
+        private readonly IBarcodeSystem barcodeSystem;
 
         private InsertCashTransaction transaction;
 
@@ -41,7 +40,7 @@ namespace Barcode.Controller.Commands.AdminCommands
             {
                 barcodeCli.DisplayUserNotFound(username);
             }
-            
+
             base.Execute();
         }
 

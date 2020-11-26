@@ -5,6 +5,9 @@ namespace Barcode
 {
     public interface IBarcodeSystem
     {
+        IEnumerable<Product> ActiveProducts { get; }
+        List<Transaction> Transactions { get; }
+        IEnumerable<User> Users { get; }
         BuyTransaction BuyProduct(User user, Product product, int amountToPurchase = 1);
         InsertCashTransaction AddCreditsToAccount(User user, decimal amount);
         T ExecuteTransaction<T>(T transaction) where T : Transaction, ICommand;
@@ -13,8 +16,5 @@ namespace Barcode
         IEnumerable<User> GetUsers(Func<User, bool> predicate);
         User GetUserByUsername(string username);
         IEnumerable<Transaction> GetTransactionsForUser(User user, int count);
-        IEnumerable<Product> ActiveProducts { get; }
-        List<Transaction> Transactions { get; }
-        IEnumerable<User> Users { get; }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Barcode.Exceptions;
 using Barcode;
+using Barcode.Exceptions;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -14,12 +14,12 @@ namespace BarcodeTests.UserTests
         [SetUp]
         public void SetUp()
         {
-           userArgs = new object[]
-           {
-              "Christian", "Houmann", "chbh", "christian@bagerbach.com" 
-           };
+            userArgs = new object[]
+            {
+                "Christian", "Houmann", "chbh", "christian@bagerbach.com"
+            };
         }
-        
+
 
         [Test]
         public void Constructor_CreateUser_IdIncrementsOnCreate()
@@ -27,15 +27,15 @@ namespace BarcodeTests.UserTests
             User user1 = Substitute.For<User>(userArgs);
             User user2 = Substitute.For<User>(userArgs);
 
-            bool newestUserHasGreatestId = user1.Id < user2.Id; 
-            
+            bool newestUserHasGreatestId = user1.Id < user2.Id;
+
             Assert.That(newestUserHasGreatestId, Is.True);
         }
 
         [Test]
         public void CompareTo_SortingUsers_IsSortedById()
         {
-            List<User> userList = new List<User>()
+            List<User> userList = new List<User>
             {
                 Substitute.For<User>(userArgs),
                 Substitute.For<User>(userArgs),
@@ -43,7 +43,7 @@ namespace BarcodeTests.UserTests
             };
 
             userList.Sort();
-            
+
             Assert.That(userList, Is.Ordered);
         }
 
@@ -52,8 +52,8 @@ namespace BarcodeTests.UserTests
         public void EmailAddress_SetEmail_AcceptsCorrectlyFormattedEmailAddress(string email)
         {
             User user = Substitute.For<User>(userArgs);
-            user.Email= email;
-            
+            user.Email = email;
+
             Assert.That(user.Email, Is.EqualTo(email));
         }
 
@@ -73,7 +73,7 @@ namespace BarcodeTests.UserTests
             User user = Substitute.For<User>(userArgs);
 
             TestDelegate setUserEmail = () => user.Email = email;
-            
+
             Assert.Throws<InvalidEmailException>(setUserEmail, $"Got: {user.Email}");
         }
 
@@ -96,7 +96,7 @@ namespace BarcodeTests.UserTests
         public void Username_SetUsername_RejectsIllegalUsername(string username)
         {
             User user = Substitute.For<User>(userArgs);
-            
+
             TestDelegate setUsername = () => user.Username = username;
 
             Assert.Throws<InvalidUsernameException>(setUsername, $"Got: {user.Username}");
@@ -115,19 +115,19 @@ namespace BarcodeTests.UserTests
         [TestCase("")]
         public void LastName_SetLastNameToEmptyString_Fails(string lastName)
         {
-             User user = Substitute.For<User>(userArgs);
- 
-             TestDelegate setLastName = () => user.LastName = lastName;
- 
-             Assert.Throws<ArgumentException>(setLastName);
+            User user = Substitute.For<User>(userArgs);
+
+            TestDelegate setLastName = () => user.LastName = lastName;
+
+            Assert.Throws<ArgumentException>(setLastName);
         }
 
         [Test]
         public void ToString_CallToStringOnUser_ReturnsString()
         {
             User user = Substitute.For<User>(userArgs);
-            
-            Assert.That(user.ToString(), Is.TypeOf<String>());
+
+            Assert.That(user.ToString(), Is.TypeOf<string>());
         }
     }
 }

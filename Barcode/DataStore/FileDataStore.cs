@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Barcode.DataStore
 {
     public abstract class FileDataStore<T> : IDataStore<T>
     {
-        private protected string fileName;
-        private protected string directoryName;
         private protected readonly string rootDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
-        public string fullFilePath { get; private set; }
+        private protected string directoryName;
+        private protected string fileName;
 
         public FileDataStore(string directoryName, string fileName)
         {
@@ -19,7 +17,9 @@ namespace Barcode.DataStore
             fullFilePath = Path.Combine(rootDirectoryPath, directoryName, fileName);
             CreateFile();
         }
-        
+
+        public string fullFilePath { get; }
+
         public virtual IEnumerable<T> ReadData()
         {
             throw new NotImplementedException();
@@ -34,7 +34,7 @@ namespace Barcode.DataStore
         {
             string directoryPath = Path.Combine(rootDirectoryPath, directoryName);
 
-            if (!Directory.Exists(directoryPath)) 
+            if (!Directory.Exists(directoryPath))
                 Directory.CreateDirectory(directoryPath);
 
             if (!File.Exists(fullFilePath))

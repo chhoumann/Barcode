@@ -6,19 +6,19 @@ using Microsoft.VisualBasic;
 
 namespace Barcode.DataStore
 {
-    class ProductCsvFileDataStore<T> : CsvFileDataStore<T> where T : Product, new()
+    internal class ProductCsvFileDataStore<T> : CsvFileDataStore<T> where T : Product, new()
     {
         public ProductCsvFileDataStore(string directoryName, string fileName, string separator)
             : base(directoryName, fileName, separator)
         {
         }
-        
+
         public override IEnumerable<T> ReadData()
         {
             return (IEnumerable<T>) File.ReadAllLines(fullFilePath)
                 .Skip(1)
                 .Select(x => x.Split(separator))
-                .Select(dataRow => new Product()
+                .Select(dataRow => new Product
                 {
                     Id = Convert.ToUInt32(dataRow[0]),
                     Name = Strings.Trim(RemoveCitationMarks(RemoveHtmlTagFromString(dataRow[1]))),
@@ -31,9 +31,9 @@ namespace Barcode.DataStore
         {
             if (!s.Contains('<')) return s;
 
-            var tagStart = s.IndexOf('<');
-            var tagEnd = s.IndexOf('>');
-            
+            int tagStart = s.IndexOf('<');
+            int tagEnd = s.IndexOf('>');
+
             return RemoveHtmlTagFromString(s.Remove(tagStart, tagEnd - tagStart + 1));
         }
 

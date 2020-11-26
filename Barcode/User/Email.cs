@@ -7,7 +7,9 @@ namespace Barcode
     {
         private string emailAddress;
 
-        public Email() { }
+        public Email()
+        {
+        }
 
         public Email(string emailAddress)
         {
@@ -25,7 +27,7 @@ namespace Barcode
         }
 
         /// <summary>
-        /// Validates an email address.
+        ///     Validates an email address.
         /// </summary>
         /// <param name="email">Email address to validate.</param>
         /// <returns>A boolean representing the validity of the email.</returns>
@@ -36,17 +38,23 @@ namespace Barcode
             if (!emailHasCorrectFormat) return false;
 
             string domainStartAndEnd = emailParts[1].Remove(1, emailParts[1].Length - 2);
-            
-            bool IsDotOrSeparator(char c) => c == '.' || c == '-';
 
-            bool localPartIsLegal = (emailParts[0].All(c => char.IsLetterOrDigit(c) || IsDotOrSeparator(c)));
-            bool domainPartIsLegal = (!domainStartAndEnd.Any(IsDotOrSeparator) &&
-                                      emailParts[1].All(c => char.IsLetterOrDigit(c) || IsDotOrSeparator(c)) &&
-                                      emailParts[1].Contains('.'));
-            
-            return (localPartIsLegal && domainPartIsLegal);
+            bool IsDotOrSeparator(char c)
+            {
+                return c == '.' || c == '-';
+            }
+
+            bool localPartIsLegal = emailParts[0].All(c => char.IsLetterOrDigit(c) || IsDotOrSeparator(c));
+            bool domainPartIsLegal = !domainStartAndEnd.Any(IsDotOrSeparator) &&
+                                     emailParts[1].All(c => char.IsLetterOrDigit(c) || IsDotOrSeparator(c)) &&
+                                     emailParts[1].Contains('.');
+
+            return localPartIsLegal && domainPartIsLegal;
         }
 
-        public override string ToString() => EmailAddress;
+        public override string ToString()
+        {
+            return EmailAddress;
+        }
     }
 }

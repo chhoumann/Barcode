@@ -15,7 +15,7 @@ namespace Barcode.DataStore
         }
     }
 
-    class UserCsvFileDataStore<T> : CsvFileDataStore<T> where T : User, new()
+    internal class UserCsvFileDataStore<T> : CsvFileDataStore<T> where T : User, new()
     {
         public UserCsvFileDataStore(string directoryName, string fileName, string separator) : base(directoryName,
             fileName, separator)

@@ -14,7 +14,7 @@ namespace Barcode.DataStore
         {
             if (File.Exists(fullFilePath))
                 return File.ReadAllLines(fullFilePath) as IEnumerable<T>;
-            
+
             throw new FileNotFoundException($"{fileName} not found.");
         }
 

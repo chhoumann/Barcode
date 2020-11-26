@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Barcode.Controller
+﻿namespace Barcode.Controller
 {
     public abstract class CliCommand : Command
     {
@@ -11,13 +9,18 @@ namespace Barcode.Controller
             Command = command;
         }
 
-        protected CliCommand() { }
+        protected CliCommand()
+        {
+        }
 
         protected bool HasEnoughArguments(int amountOfArgumentsExpected)
         {
             return Command.Length == amountOfArgumentsExpected;
         }
 
-        public override string ToString() => string.Join(" ", Command);
+        public override string ToString()
+        {
+            return string.Join(" ", Command);
+        }
     }
 }

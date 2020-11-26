@@ -4,7 +4,7 @@ namespace Barcode.Controller.Commands
 {
     public class CloseCommand : CliCommand
     {
-        private IBarcodeCLI barcodeCli;
+        private readonly IBarcodeCLI barcodeCli;
 
         public CloseCommand(IBarcodeCLI barcodeCli)
         {

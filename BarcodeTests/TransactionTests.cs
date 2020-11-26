@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Barcode;
 using Barcode.Exceptions;
-using Barcode;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -9,42 +8,43 @@ namespace BarcodeTests
     [TestFixture]
     public class TransactionTests
     {
-        private object[] userArgs;
-        
         [SetUp]
         public void SetUp()
         {
             userArgs = new object[]
             {
-                "Christian", "Houmann", "chbh", "christian@bagerbach.com" 
+                "Christian", "Houmann", "chbh", "christian@bagerbach.com"
             };
         }
-        
+
+        private object[] userArgs;
+
         [TestCase(10)]
         public void BuyTransaction_BuyProductWithSufficientCredits_Success(decimal productPrice)
         {
             Product product = Substitute.For<Product>("Milk", productPrice);
             User user = Substitute.For<User>(userArgs);
             user.Balance = productPrice;
-            
-            var transaction = new BuyTransaction(user, product);
+
+            BuyTransaction transaction = new BuyTransaction(user, product);
             transaction.Execute();
-            
+
             Assert.That(transaction.Succeeded, Is.True);
         }
 
         [TestCase(11, 10)]
-        public void BuyTransaction_BuyProductWithInsufficientCredits_ThrowsException(decimal productPrice, decimal userBalance)
+        public void BuyTransaction_BuyProductWithInsufficientCredits_ThrowsException(decimal productPrice,
+            decimal userBalance)
         {
             Product product = Substitute.For<Product>("Milk", productPrice);
             User user = Substitute.For<User>(userArgs);
             user.Balance = userBalance;
 
-            var transaction = new BuyTransaction(user, product);
-            
+            BuyTransaction transaction = new BuyTransaction(user, product);
+
             Assert.Throws<InsufficientCreditsException>(transaction.Execute);
         }
-        
+
         [Test]
         public void BuyTransaction_UndoProductPurchase_Success()
         {
@@ -53,10 +53,10 @@ namespace BarcodeTests
             User user = Substitute.For<User>(userArgs);
             user.Balance = amount;
 
-            var transaction = new BuyTransaction(user, product);
+            BuyTransaction transaction = new BuyTransaction(user, product);
             transaction.Execute();
             transaction.Undo();
-            
+
             Assert.That(transaction.Undone, Is.True);
             Assert.That(user.Balance, Is.EqualTo(amount));
         }
@@ -67,10 +67,10 @@ namespace BarcodeTests
             const decimal amount = 10;
             Product product = Substitute.For<Product>("Milk", amount);
             User user = Substitute.For<User>(userArgs);
-    
-            var transaction = new BuyTransaction(user, product);
-            
-            Assert.That(transaction.ToString(), Is.TypeOf<String>());
+
+            BuyTransaction transaction = new BuyTransaction(user, product);
+
+            Assert.That(transaction.ToString(), Is.TypeOf<string>());
         }
 
         [Test]
@@ -78,10 +78,10 @@ namespace BarcodeTests
         {
             User user = Substitute.For<User>(userArgs);
             decimal previousUserBalance = user.Balance;
-            
-            var transaction = new InsertCashTransaction(user, 50m);
+
+            InsertCashTransaction transaction = new InsertCashTransaction(user, 50m);
             transaction.Execute();
-            
+
             Assert.That(user.Balance, Is.EqualTo(previousUserBalance + 50m));
             Assert.That(transaction.Succeeded, Is.True);
         }
@@ -91,11 +91,11 @@ namespace BarcodeTests
         {
             User user = Substitute.For<User>(userArgs);
             const decimal insertAmount = 50m;
-            
-            var transaction = new InsertCashTransaction(user, insertAmount);
+
+            InsertCashTransaction transaction = new InsertCashTransaction(user, insertAmount);
             transaction.Execute();
             transaction.Undo();
-            
+
             Assert.That(transaction.Undone, Is.True);
             Assert.That(user.Balance, Is.EqualTo(0));
         }
@@ -104,10 +104,10 @@ namespace BarcodeTests
         public void InsertCashTransaction_CallToString_ReturnsString()
         {
             User user = Substitute.For<User>(userArgs);
-                        
-            var transaction = new InsertCashTransaction(user, 50m);
-            
-            Assert.That(transaction.ToString(), Is.TypeOf<String>());
+
+            InsertCashTransaction transaction = new InsertCashTransaction(user, 50m);
+
+            Assert.That(transaction.ToString(), Is.TypeOf<string>());
         }
     }
 }

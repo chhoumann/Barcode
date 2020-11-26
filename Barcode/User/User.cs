@@ -6,15 +6,28 @@ namespace Barcode
 {
     public class User : IComparable
     {
-        public static event Action<User> UserBalanceNotification;
-        private static uint userIdTracker = 0;
         private const decimal balanceNotificationThreshold = 50m;
-        
-        private string username;
-        private Email email;
+        private static uint userIdTracker;
+        private decimal balance;
+        private readonly Email email;
         private string firstName;
         private string lastName;
-        private decimal balance;
+
+        private string username;
+
+        public User()
+        {
+            Id = userIdTracker++;
+            email = new Email();
+        }
+
+        public User(string firstName, string lastName, string username, string emailAddress) : this()
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Username = username;
+            email = new Email(emailAddress);
+        }
 
         public decimal Balance
         {
@@ -55,8 +68,8 @@ namespace Barcode
             get => username;
             set
             {
-                var illegalCharacterRegex = new Regex(@"([^a-z0-9_])");
-                
+                Regex illegalCharacterRegex = new Regex(@"([^a-z0-9_])");
+
                 if (!illegalCharacterRegex.IsMatch(value) && !string.IsNullOrWhiteSpace(value))
                     username = value;
                 else
@@ -71,32 +84,20 @@ namespace Barcode
             set => email.EmailAddress = value;
         }
 
-        public User()
+        public int CompareTo(object? obj)
         {
-            Id = userIdTracker++;
-            email = new Email();
+            return obj is User otherUser ? Id.CompareTo(otherUser.Id) : 1;
         }
 
-        public User(string firstName, string lastName, string username, string emailAddress) : this()
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Username = username;
-            email = new Email(emailAddress);
-        }
+        public static event Action<User> UserBalanceNotification;
 
         public override string ToString()
         {
             return $"{firstName} {lastName} - {username} | #{Id}" +
-                   $"\n" +
+                   "\n" +
                    $"{email}" +
-                   $"\n" +
+                   "\n" +
                    $"Balance: {Balance} credits";
-        }
-
-        public int CompareTo(object? obj)
-        {
-            return obj is User otherUser ? Id.CompareTo(otherUser.Id) : 1;
         }
     }
 }

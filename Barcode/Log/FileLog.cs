@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Barcode.DataStore;
 
 namespace Barcode.Log
 {
     public sealed class FileLog : ILog
     {
-        private IDataStore<string> _dataStore;
-        public List<string> LogEntries { get; private set; }
+        private readonly IDataStore<string> _dataStore;
 
         public FileLog()
         {
@@ -18,6 +14,8 @@ namespace Barcode.Log
             LogEntries = new List<string>();
             LogEntries = _dataStore.ReadData().ToList();
         }
+
+        public List<string> LogEntries { get; }
 
         public void AddLogEntry(object sender)
         {

@@ -1,11 +1,13 @@
 ﻿using Barcode.BarcodeCLI;
 
-namespace Barcode.Controller.Commands.UserCommands
+namespace Barcode.Controller.Commands.UserCommands.ProductSet
 {
-    class ProductSetActiveState : ProductSetCommand
+    internal class ProductSetActiveState : ProductSetCommand
     {
-        private bool active;
-        public ProductSetActiveState(string[] command, bool isActive, IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem) : base(command, barcodeCli, barcodeSystem)
+        private readonly bool active;
+
+        public ProductSetActiveState(string[] command, bool isActive, IBarcodeCLI barcodeCli,
+            IBarcodeSystem barcodeSystem) : base(command, barcodeCli, barcodeSystem)
         {
             active = isActive;
         }
@@ -13,11 +15,11 @@ namespace Barcode.Controller.Commands.UserCommands
         public override void Execute()
         {
             if (!TryGetProduct()) return;
-            
+
             product.Active = active;
             barcodeCli.DisplayProductActivatedChange(product);
             Succeeded = true;
-            
+
             base.Execute();
         }
 
@@ -27,7 +29,7 @@ namespace Barcode.Controller.Commands.UserCommands
 
             product.Active = !active;
             Undone = true;
-            
+
             base.Undo();
         }
     }

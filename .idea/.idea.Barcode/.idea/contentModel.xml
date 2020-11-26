@@ -36,9 +36,13 @@
             </e>
             <e p="CloseCommand.cs" t="Include" />
             <e p="UserCommands" t="Include">
-              <e p="ProductSetActiveState.cs" t="Include" />
-              <e p="ProductSetCommand.cs" t="Include" />
-              <e p="ProductSetCreditState.cs" t="Include" />
+              <e p="BuyProductCommand.cs" t="Include" />
+              <e p="DisplayUserInfoCommand.cs" t="Include" />
+              <e p="ProductSet" t="Include">
+                <e p="ProductSetActiveState.cs" t="Include" />
+                <e p="ProductSetCommand.cs" t="Include" />
+                <e p="ProductSetCreditState.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>

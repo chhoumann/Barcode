@@ -1,12 +1,13 @@
 ﻿using Barcode.BarcodeCLI;
 
-namespace Barcode.Controller.Commands.UserCommands
+namespace Barcode.Controller.Commands.UserCommands.ProductSet
 {
-    class ProductSetCreditState : ProductSetCommand
+    internal class ProductSetCreditState : ProductSetCommand
     {
-        private bool credit;
+        private readonly bool credit;
 
-        public ProductSetCreditState(string[] command, bool canBeBoughtOnCredit, IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem) : base(command, barcodeCli, barcodeSystem)
+        public ProductSetCreditState(string[] command, bool canBeBoughtOnCredit, IBarcodeCLI barcodeCli,
+            IBarcodeSystem barcodeSystem) : base(command, barcodeCli, barcodeSystem)
         {
             credit = canBeBoughtOnCredit;
         }
@@ -18,7 +19,7 @@ namespace Barcode.Controller.Commands.UserCommands
             product.CanBeBoughtOnCredit = credit;
             barcodeCli.DisplayProductOnCreditChange(product);
             Succeeded = true;
-            
+
             base.Execute();
         }
 
@@ -28,7 +29,7 @@ namespace Barcode.Controller.Commands.UserCommands
 
             product.CanBeBoughtOnCredit = !credit;
             Undone = true;
-            
+
             base.Undo();
         }
     }
