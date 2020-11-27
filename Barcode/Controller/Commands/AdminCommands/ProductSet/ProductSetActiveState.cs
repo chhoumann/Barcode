@@ -1,6 +1,6 @@
 ﻿using Barcode.BarcodeCLI;
 
-namespace Barcode.Controller.Commands.UserCommands.ProductSet
+namespace Barcode.Controller.Commands.AdminCommands.ProductSet
 {
     internal class ProductSetActiveState : ProductSetCommand
     {

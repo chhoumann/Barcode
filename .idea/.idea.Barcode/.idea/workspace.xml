@@ -25,22 +25,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Data error handling">
-      <change afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" afterDir="false" />
+    <list default="true" id="8d2376f8-0319-425f-bcd1-e44f79c836d1" name="Default Changelist" comment="Almost done...">
+      <change afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/UndoCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Barcode/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCli.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCli.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ClearCommand.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayCommandLogCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayCommandLogCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/HelpCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/HelpCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetActiveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ProductSet/ProductSetActiveState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ProductSet/ProductSetCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCreditState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ProductSet/ProductSetCreditState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Product/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Product/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/bin/Debug/netcoreapp3.1/Logs/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Barcode/obj/Debug/netcoreapp3.1/Barcode.pdb" afterDir="false" />
@@ -83,7 +85,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BarcodeTests/UserTests/UserTests.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/ITransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/ILogStrategy.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/Log.cs" />
@@ -105,14 +106,12 @@
         <option value="$PROJECT_DIR$/Barcode/Product/SeasonalProduct.cs" />
         <option value="$PROJECT_DIR$/Barcode/ICommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCLI.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/HelpCommand.cs" />
         <option value="$PROJECT_DIR$/BarcodeTests/BarcodeSystemTests.cs" />
         <option value="$PROJECT_DIR$/Barcode/DataStore/TransactionCsvFileDataStore.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/Transaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayAllProductsCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayProductLineupCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/ClearCommand.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Product/Product.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/BuyProductCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Command.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/CliCommand.cs" />
@@ -121,19 +120,22 @@
         <option value="$PROJECT_DIR$/Barcode/DataStore/TextFileDataStore.cs" />
         <option value="$PROJECT_DIR$/Barcode/Log/FileLog.cs" />
         <option value="$PROJECT_DIR$/Barcode/DataStore/ProductCsvFileDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Program.cs" />
         <option value="$PROJECT_DIR$/Barcode/DataStore/FileDataStore.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/AddCreditToUser.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/DisplayCommandLogCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetActiveState.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/ProductSet/ProductSetCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/IBarcodeCLI.cs" />
-        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/InsertCashTransaction.cs" />
         <option value="$PROJECT_DIR$/Barcode/Transaction/BuyTransaction.cs" />
-        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCli.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/HelpCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Product/Product.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Program.cs" />
         <option value="$PROJECT_DIR$/Barcode/Controller/BarcodeController.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/AdminCommands/UndoCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeCLI/BarcodeCli.cs" />
+        <option value="$PROJECT_DIR$/Barcode/Controller/Commands/UserCommands/DisplayUserInfoCommand.cs" />
+        <option value="$PROJECT_DIR$/Barcode/BarcodeSystem/BarcodeSystem.cs" />
       </list>
     </option>
   </component>
@@ -203,7 +205,7 @@
       <workItem from="1606138318496" duration="5409000" />
       <workItem from="1606317908357" duration="19905000" />
       <workItem from="1606380315715" duration="769000" />
-      <workItem from="1606403779974" duration="15488000" />
+      <workItem from="1606403779974" duration="21175000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring. Move email to emai">
       <created>1605871067981</created>
@@ -296,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606426796195</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Almost done...">
+      <created>1606429694889</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606429694889</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +350,8 @@
     <MESSAGE value="Commands redo &amp; undo. Refactor commands." />
     <MESSAGE value="Finish command refactor." />
     <MESSAGE value="Data error handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data error handling" />
+    <MESSAGE value="Almost done..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done..." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1692" y="566" width="629" height="550" key="#Vim_Emulation" timestamp="1605825607779">
@@ -368,86 +378,86 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="643" y="322" key="Github.UntrackedFilesDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1605869739891" />
-    <state width="3397" height="360" key="GridCell.Tab.0.bottom" timestamp="1606429339777">
+    <state width="3397" height="360" key="GridCell.Tab.0.bottom" timestamp="1606435237180">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="360" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606429339777" />
-    <state width="3397" height="360" key="GridCell.Tab.0.center" timestamp="1606429339776">
+    <state width="3397" height="360" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606435237180" />
+    <state width="3397" height="360" key="GridCell.Tab.0.center" timestamp="1606435237180">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="360" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606429339776" />
-    <state width="3397" height="360" key="GridCell.Tab.0.left" timestamp="1606429339776">
+    <state width="3397" height="360" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606435237180" />
+    <state width="3397" height="360" key="GridCell.Tab.0.left" timestamp="1606435237180">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="360" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606429339776" />
-    <state width="3397" height="360" key="GridCell.Tab.0.right" timestamp="1606429339777">
+    <state width="3397" height="360" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606435237180" />
+    <state width="3397" height="360" key="GridCell.Tab.0.right" timestamp="1606435237180">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="360" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606429339777" />
-    <state width="3397" height="450" key="GridCell.Tab.1.bottom" timestamp="1606421487718">
+    <state width="3397" height="360" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606435237180" />
+    <state width="3397" height="450" key="GridCell.Tab.1.bottom" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.1.center" timestamp="1606421487718">
+    <state width="3397" height="450" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.1.center" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.1.left" timestamp="1606421487718">
+    <state width="3397" height="450" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.1.left" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.1.right" timestamp="1606421487718">
+    <state width="3397" height="450" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.1.right" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.2.bottom" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.2.bottom" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.2.center" timestamp="1606421487718">
+    <state width="3397" height="450" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.2.center" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.2.left" timestamp="1606421487718">
+    <state width="3397" height="450" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.2.left" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.2.right" timestamp="1606421487718">
+    <state width="3397" height="450" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.2.right" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487718" />
-    <state width="3397" height="450" key="GridCell.Tab.3.bottom" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.3.bottom" timestamp="1606434948872">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.3.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.3.center" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.3.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948872" />
+    <state width="3397" height="450" key="GridCell.Tab.3.center" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.3.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.3.left" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.3.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.3.left" timestamp="1606434948871">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.3.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.3.right" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.3.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948871" />
+    <state width="3397" height="450" key="GridCell.Tab.3.right" timestamp="1606434948872">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.3.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.4.bottom" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.3.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948872" />
+    <state width="3397" height="450" key="GridCell.Tab.4.bottom" timestamp="1606434948872">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.4.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.4.center" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.4.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948872" />
+    <state width="3397" height="450" key="GridCell.Tab.4.center" timestamp="1606434948872">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.4.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.4.left" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.4.center/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948872" />
+    <state width="3397" height="450" key="GridCell.Tab.4.left" timestamp="1606434948872">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.4.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
-    <state width="3397" height="450" key="GridCell.Tab.4.right" timestamp="1606421487719">
+    <state width="3397" height="450" key="GridCell.Tab.4.left/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948872" />
+    <state width="3397" height="450" key="GridCell.Tab.4.right" timestamp="1606434948872">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="450" key="GridCell.Tab.4.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606421487719" />
+    <state width="3397" height="450" key="GridCell.Tab.4.right/0.0.3440.1400@0.0.3440.1400" timestamp="1606434948872" />
     <state x="1132" y="459" key="LayersDialog" timestamp="1606334581928">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -456,10 +466,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="589" y="295" key="Rider.ProjectTemplateDialog.Size/0.0.3440.1400@0.0.3440.1400" timestamp="1605804612835" />
-    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1606419877447">
+    <state x="802" y="237" key="RiderGenerateDialog" timestamp="1606434559522">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606419877447" />
+    <state x="802" y="237" key="RiderGenerateDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606434559522" />
     <state x="1527" y="326" key="RollbackChangesDialog" timestamp="1605902805213">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -472,14 +482,14 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="719" y="100" width="2269" height="1207" key="VCS.FileHistoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1606425103561" />
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1606350472676">
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2" timestamp="1606429699202">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1606350472676" />
-    <state width="1728" height="708" key="XDebugger.FullValuePopup" timestamp="1605993834069">
+    <state x="452" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1606429699202" />
+    <state width="1728" height="708" key="XDebugger.FullValuePopup" timestamp="1606430984531">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1728" height="708" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1605993834069" />
+    <state width="1728" height="708" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1606430984531" />
     <state x="677" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605871012310">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

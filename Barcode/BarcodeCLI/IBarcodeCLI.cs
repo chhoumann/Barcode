@@ -22,7 +22,7 @@ namespace Barcode.BarcodeCLI
         void DisplayAddCreditsTransaction(InsertCashTransaction transaction);
         void DisplayUserBalanceNotification(User user);
         void DisplayProductLineup(List<Product> productLineup);
-        void DisplayCommands(Dictionary<string, Action<string[]>> commands);
+        void DisplayCommands(List<(string command, string syntax, Action<string[]>)> commands);
         void DisplayCommandLog(List<ICommand> commandsExecuted);
         IBarcodeCLI AwaitKeyPress();
         void DisplayUserInfo(User user, List<Transaction> transactionsForUser);

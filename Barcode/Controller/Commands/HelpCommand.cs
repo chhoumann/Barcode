@@ -6,10 +6,10 @@ namespace Barcode.Controller.Commands
 {
     public class HelpCommand : CliCommand
     {
-        private readonly Dictionary<string, Action<string[]>> commands;
+        private readonly List<(string command, string syntax, Action<string[]>)> commands;
         private IBarcodeCLI barcodeCli;
 
-        public HelpCommand(Dictionary<string, Action<string[]>> commands, IBarcodeCLI barcodeCli)
+        public HelpCommand(List<(string command, string syntax, Action<string[]>)> commands, IBarcodeCLI barcodeCli)
         {
             this.commands = commands;
             this.barcodeCli = barcodeCli;

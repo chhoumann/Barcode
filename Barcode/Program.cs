@@ -15,18 +15,11 @@ namespace Barcode
             IBarcodeSystem barcodeSystem;
             BarcodeController barcodeController;
             
-            try
-            {
-                 barcodeSystem = new BarcodeSystem(log, barcodeCli)
-                     .AddProductDataStore(new ProductCsvFileDataStore<Product>("Data", "products.csv", ";"))
-                     .AddUserDataStore(new UserCsvFileDataStore<User>("Data", "users.csv", ","));
+            barcodeSystem = new BarcodeSystem(log, barcodeCli)
+                .AddProductDataStore(new ProductCsvFileDataStore<Product>("Data", "products.csv", ";"))
+                .AddUserDataStore(new UserCsvFileDataStore<User>("Data", "users.csv", ","));
 
-                 new BarcodeController(barcodeCli, barcodeSystem).Start();
-            }
-            catch (Exception e)
-            {
-                barcodeCli.DisplayGeneralError(e.ToString());
-            }
+            new BarcodeController(barcodeCli, barcodeSystem).Start();
         }
     }
 }

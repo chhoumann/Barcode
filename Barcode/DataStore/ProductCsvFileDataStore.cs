@@ -27,6 +27,11 @@ namespace Barcode.DataStore
                 });
         }
 
+        public override void AppendData(IEnumerable<T> data)
+        {
+            throw new NotImplementedException();
+        }
+
         private string RemoveHtmlTagFromString(string s)
         {
             if (!s.Contains('<')) return s;

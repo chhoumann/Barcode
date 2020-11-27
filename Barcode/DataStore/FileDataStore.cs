@@ -23,10 +23,7 @@ namespace Barcode.DataStore
         
         public abstract IEnumerable<T> ReadData();
 
-        public virtual void AppendData(IEnumerable<T> data)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void AppendData(IEnumerable<T> data);
 
         private protected bool DoesFolderExist() => Directory.Exists(directoryPath);
     }

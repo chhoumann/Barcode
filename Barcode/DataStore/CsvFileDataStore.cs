@@ -33,5 +33,10 @@ namespace Barcode.DataStore
                     Balance = Convert.ToDecimal(dataRow[4])
                 });
         }
+
+        public override void AppendData(IEnumerable<T> data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

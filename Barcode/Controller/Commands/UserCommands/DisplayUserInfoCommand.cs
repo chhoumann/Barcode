@@ -26,7 +26,10 @@ namespace Barcode.Controller.Commands.UserCommands
                 User user = barcodeSystem.GetUserByUsername(username);
                 List<Transaction> transactionsForUser = new List<Transaction>();
 
-                transactionsForUser = barcodeSystem.GetTransactionsForUser(user, 10).ToList();
+                transactionsForUser = barcodeSystem
+                                        .GetTransactionsForUser(user, 10)
+                                        .Where(t => !t.Undone)
+                                        .ToList();
                 
                 barcodeCli.DisplayUserInfo(user, transactionsForUser);
             }

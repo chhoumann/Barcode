@@ -92,57 +92,12 @@ namespace BarcodeTests
             BarcodeSystem barcodeSystem = Substitute.For<BarcodeSystem>(log);
             Product product = Substitute.For<Product>(productArgs);
             product.Active = true;
-            barcodeSystem.Products =
-                new List<Product>() {product}; // TODO: If you simply used the interface, you wouldn't have to make all this shit public.
+            barcodeSystem.Products = new List<Product>() {product}; 
 
             Product foundProduct = barcodeSystem.GetProductById(product.Id);
 
             Assert.That(foundProduct, Is.EqualTo(product));
         }
-
-        // TODO: Deal with this.
-        //[Test]
-        /*public void GetUsers_FindCorrectUsers_True()
-        {
-            var users = new[]
-            {
-                Substitute.For<User>(userArgs),
-                Substitute.For<User>(userArgs),
-                Substitute.For<User>(userArgs),
-                Substitute.For<User>(userArgs),
-            };
-            
-            const decimal userBalance = Decimal.One;
-            BarcodeSystem barcodeSystem = Substitute.For<BarcodeSystem>();
-            foreach (var user in users) user.Balance = userBalance;
-            barcodeSystem.Users.Returns(users);
-
-            Func<User, bool> findUsersWithABalanceOfZero = user => user.Balance.Equals(userBalance);
-            var foundUsers = barcodeSystem.GetUsers(findUsersWithABalanceOfZero);
-
-            Assert.That(foundUsers, Is.EquivalentTo(users));
-        }
-
-        [Test]
-        public void GetUserByUsername_GetsCorrectUser_True()
-        {
-            User targetUser = Substitute.For<User>(userArgs);
-            var users = new List<User>()
-            {
-                targetUser,
-                Substitute.For<User>(userArgs),
-                Substitute.For<User>(userArgs),
-                Substitute.For<User>(userArgs),
-                Substitute.For<User>(userArgs),
-            };
-            BarcodeSystem barcodeSystem = Substitute.For<BarcodeSystem>(log);
-            Func<CallInfo, IEnumerable<User>> f = (CallInfo i) => users;
-            barcodeSystem.Users.Returns(f);
-            
-            var foundUser = barcodeSystem.GetUserByUsername(targetUser.Username);
-
-            Assert.That(foundUser.Username, Is.EqualTo(targetUser.Username));
-        }*/
 
         [Test]
         public void GetTransactionsForUser_ReturnsOrderedTransactions_True()

@@ -1,8 +1,7 @@
 ﻿using System;
 using Barcode.BarcodeCLI;
-using Barcode.Exceptions;
 
-namespace Barcode.Controller.Commands.UserCommands.ProductSet
+namespace Barcode.Controller.Commands.AdminCommands.ProductSet
 {
     public abstract class ProductSetCommand : CliCommand
     {

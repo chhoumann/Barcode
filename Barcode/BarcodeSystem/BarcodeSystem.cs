@@ -68,14 +68,13 @@ namespace Barcode
             }
         }
 
-        // TODO: Strategy Pattern for predicates
         public IEnumerable<User> GetUsers(Func<User, bool> predicate)
         {
             try
             {
                 return Users.Where(predicate);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new UserNotFoundException("Users not found with given predicate.");
             }

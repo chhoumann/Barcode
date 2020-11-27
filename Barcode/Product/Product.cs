@@ -37,7 +37,7 @@ namespace Barcode
 
         public override string ToString()
         {
-            return $"#{Id} {Name} {Price} credits";
+            return $"#{Id, 5} | {Name, 40} {Price, 10} credits";
         }
     }
 }

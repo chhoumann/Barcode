@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Barcode.BarcodeCLI;
 using Barcode.Controller.Commands;
 using Barcode.Controller.Commands.AdminCommands;
+using Barcode.Controller.Commands.AdminCommands.ProductSet;
 using Barcode.Controller.Commands.UserCommands;
-using Barcode.Controller.Commands.UserCommands.ProductSet;
 using Microsoft.VisualBasic;
+using static System.String;
 
 namespace Barcode.Controller
 {
@@ -14,28 +16,24 @@ namespace Barcode.Controller
         private readonly IBarcodeCLI barcodeCli;
         private readonly IBarcodeSystem barcodeSystem;
         private readonly List<ICommand> commandsExecuted = new List<ICommand>();
-        private readonly Dictionary<string, Action<string[]>> userCommands = new Dictionary<string, Action<string[]>>();
-        private readonly Dictionary<string, Action<string[]>>
-                    adminCommands = new Dictionary<string, Action<string[]>>();
+        
+        private List<(string Command, string Syntax, Action<string[]> Action)> userCommands = new List<(string Command, string Syntax, Action<string[]> Action)>();
+        private List<(string Command, string Syntax, Action<string[]> Action)> adminCommands = new List<(string Command, string Syntax, Action<string[]> Action)>();
 
         public BarcodeController(IBarcodeCLI barcodeCli, IBarcodeSystem barcodeSystem)
         {
             this.barcodeCli = barcodeCli;
             this.barcodeSystem = barcodeSystem;
 
-            AddUserCommandsToDictionary(userCommands);
-            AddAdminCommandsToDictionary(adminCommands);
+            AddUserCommands(userCommands);
+            AddAdminCommands(adminCommands);
 
             this.barcodeCli.CommandEntered += ParseCommand;
             User.UserBalanceNotification += barcodeCli.DisplayUserBalanceNotification;
             Command.CommandFired += SetLastCommandFired;
         }
 
-        public BarcodeController Start()
-        {
-            barcodeCli.Start();
-            return this;
-        }
+        public void Start() => barcodeCli.Start();
 
         private void SetLastCommandFired(ICommand command) => commandsExecuted.Add(command);
 
@@ -43,7 +41,7 @@ namespace Barcode.Controller
         {
             string formattedCommand = Strings.Trim(inputCommand).ToLower();
 
-            if (string.IsNullOrEmpty(formattedCommand))
+            if (IsNullOrEmpty(formattedCommand))
             {
                 barcodeCli.DisplayGeneralError("No command entered. Please enter a command.");
                 return;
@@ -59,10 +57,10 @@ namespace Barcode.Controller
 
         private void TryExecuteUserCommand(string[] command)
         {
-            bool isUserCommand = userCommands.ContainsKey(command[0]);
+            bool isUserCommand = userCommands.Any(item => item.Command == command[0]);
 
             if (isUserCommand)
-                userCommands[command[0]]?.Invoke(command);
+                userCommands.Find(item => item.Command == command[0]).Action(command);
             else
                 switch (command.Length)
                 {
@@ -81,85 +79,64 @@ namespace Barcode.Controller
 
         private void TryExecuteAdminCommand(string[] command)
         {
-            bool isAdminCommand = adminCommands.ContainsKey(command[0]);
+            bool isAdminCommand = adminCommands.Any(item => item.Command == command[0]);
 
             if (isAdminCommand)
-                adminCommands[command[0]]?.Invoke(command);
+                adminCommands.Find(item => item.Command == command[0]).Action(command);
             else
-                barcodeCli.DisplayAdminCommandNotFoundMessage(string.Join(" ", command));
+                barcodeCli.DisplayAdminCommandNotFoundMessage(Join(" ", command));
         }
 
-        private void AddUserCommandsToDictionary(Dictionary<string, Action<string[]>> commandDictionary)
+        private void AddUserCommands(List<(string command, string syntax, Action<string[]>)> userCommandList)
         {
-            commandDictionary["close"] = command => new CloseCommand(barcodeCli).Execute();
+            userCommandList.Add(("[USERNAME]", "(displays user information for user with given username)",
+                command => barcodeCli.DisplayGeneralError("Please enter a command.")));
             
-            commandDictionary["undo"] = command => UndoLastCommand();
-            commandDictionary["redo"] = command => RedoLastCommand();
+            userCommandList.Add(("[USERNAME] [PRODUCT_ID] (amount)",
+                "(purchase product for given user with given product Id and - optionally - amount)",
+                command => barcodeCli.DisplayGeneralError("Please enter a command")));
             
-            commandDictionary["help"] = command => new HelpCommand(commandDictionary, barcodeCli).Execute();
-            
-            commandDictionary["products"] = command =>
-                new DisplayProductLineupCommand(command, barcodeCli, barcodeSystem).Execute();
+            userCommandList.Add(("close", "no parameters (closes the program)", command => new CloseCommand(barcodeCli).Execute()));
+
+            userCommandList.Add(("help", "no parameters (displays available commands)",
+                command => new HelpCommand(userCommands, barcodeCli).Execute()));
+
+            userCommandList.Add(("products", "no parameters (shows active products)",
+                command => new DisplayProductLineupCommand(command, barcodeCli, barcodeSystem).Execute()));
         }
 
-        private void AddAdminCommandsToDictionary(Dictionary<string, Action<string[]>> adminCommandDictionary)
+        private void AddAdminCommands(List<(string command, string syntax, Action<string[]>)> adminCommandList)
         {
-            adminCommandDictionary[":q"] = command => new
-                CloseCommand(barcodeCli).Execute();
-            adminCommandDictionary[":quit"] = command => new
-                CloseCommand(barcodeCli).Execute();
-
-            adminCommandDictionary[":activate"] = command => new
-                ProductSetActiveState(command, true, barcodeCli, barcodeSystem).Execute();
-            adminCommandDictionary[":deactivate"] = command => new
-                ProductSetActiveState(command, false, barcodeCli, barcodeSystem).Execute();
-
-            adminCommandDictionary[":crediton"] = command => new
-                ProductSetCreditState(command, true, barcodeCli, barcodeSystem).Execute();
-            adminCommandDictionary[":creditoff"] = command =>
-                new ProductSetCreditState(command, false, barcodeCli, barcodeSystem).Execute();
-
-            adminCommandDictionary[":addcredits"] = command => new
-                AddCreditToUser(command, barcodeCli, barcodeSystem).Execute();
+            adminCommandList.Add((":q", "no parameters (closes the program)", command => new CloseCommand(barcodeCli).Execute()));
+            adminCommandList.Add((":quit", "no parameters (closes the program)", command => new CloseCommand(barcodeCli).Execute()));
             
-            adminCommandDictionary[":allproducts"] = command =>
-                new DisplayAllProductsCommand(command, barcodeCli, barcodeSystem).Execute();
-
-            adminCommandDictionary[":help"] = command => new
-                HelpCommand(adminCommandDictionary, barcodeCli).Execute();
+            adminCommandList.Add((":activate", "[PRODUCT_ID] (activates product with given id)",
+                command => new ProductSetActiveState(command, true, barcodeCli, barcodeSystem).Execute()));
+            adminCommandList.Add((":deactivate", "[PRODUCT_ID] (deactivates product with given id",
+                command => new ProductSetActiveState(command, false, barcodeCli, barcodeSystem).Execute()));
             
-            adminCommandDictionary[":commandlog"] = command => new DisplayCommandLogCommand(commandsExecuted, barcodeCli).Execute();
-        }
+            adminCommandList.Add((":crediton",
+                "[PRODUCT_ID] (allows product to be purchased with insufficient credits)",
+                command => new ProductSetCreditState(command, true, barcodeCli, barcodeSystem).Execute()));
+            adminCommandList.Add((":creditoff",
+                "[PRODUCT_ID] (disallows product from being purchased with insufficient credits)",
+                command => new ProductSetCreditState(command, false, barcodeCli, barcodeSystem).Execute()));
 
-        private void UndoLastCommand()
-        {
-            try
-            {
-                ICommand lastCommandExecuted =
-                    commandsExecuted.FindLast(command => command.Undone == false && command.Succeeded);
+            adminCommandList.Add((":addcredits",
+                "[USERNAME] [CREDITS_TO_ADD] (adds given amount of credits to user with specified username)",
+                command => new AddCreditToUser(command, barcodeCli, barcodeSystem).Execute()));
+            
+            adminCommandList.Add((":allproducts", "no parameters (displays all products - even inactive products)",
+                command => new DisplayAllProductsCommand(command, barcodeCli, barcodeSystem).Execute()));
+            
+            adminCommandList.Add((":undo", "no parameters (undoes last command)",
+                command => new UndoCommand(command, commandsExecuted, barcodeCli).Execute()));
 
-                lastCommandExecuted?.Undo();
-                barcodeCli.DisplayUndoCommand(lastCommandExecuted);
-            }
-            catch
-            {
-                barcodeCli.DisplayGeneralError("There is no command to undo.");
-            }
-        }
+            adminCommandList.Add((":help", "no parameters (displays admin commands)",
+                command => new HelpCommand(adminCommands, barcodeCli).Execute()));
 
-        private void RedoLastCommand()
-        {
-            try
-            {
-                ICommand lastUndoneCommand =
-                    commandsExecuted.FindLast(command => command.Undone && command.Succeeded);
-
-                lastUndoneCommand?.Execute();
-            }
-            catch
-            {
-                barcodeCli.DisplayGeneralError("There is no command to redo.");
-            }
+            adminCommandList.Add((":commandlog", "no parameters (displays executed commands)",
+                command => new DisplayCommandLogCommand(commandsExecuted, barcodeCli).Execute()));
         }
     }
 }

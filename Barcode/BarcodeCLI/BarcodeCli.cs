@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Barcode.BarcodeCLI
 {
@@ -22,11 +23,13 @@ namespace Barcode.BarcodeCLI
         public void DisplayUserInfo(User user, List<Transaction> transactionsForUser)
         {
             Console.WriteLine(user.ToString());
+
+            if (user.Balance <= 50) Console.WriteLine($"User has low balance: {user.Balance}.");
             
             Console.WriteLine($"\n" +
                               $"This user has made {transactionsForUser.Count} " +
                               $"transaction{(transactionsForUser.Count > 1 || transactionsForUser.Count == 0 ? "s" : "")}.");
-            
+
             foreach (Transaction transaction in transactionsForUser)
                 Console.WriteLine($"    {transaction}");
         }
@@ -103,18 +106,22 @@ namespace Barcode.BarcodeCLI
             Console.Clear();
         }
 
-        public void DisplayCommands(Dictionary<string, Action<string[]>> commands)
+        public void DisplayCommands(List<(string command, string syntax, Action<string[]>)> commands)
         {
-            Console.WriteLine("Here are the available commands: ");
-            foreach (string command in commands.Keys)
-                Console.WriteLine($"    {command}");
+            Console.WriteLine("Here are the available commands." +
+                              "\n" +
+                              "Required parameters are enclosed in brackets [] and " +
+                              "optional parameters are enclosed in parentheses ()." +
+                              "\n");
+            foreach (var command in commands)
+                Console.WriteLine($"{command.command, 32} | {command.syntax}");
         }
 
         public void DisplayCommandLog(List<ICommand> commandsExecuted)
         {
             Console.WriteLine($"The following {commandsExecuted.Count} commands have been executed:\n");
             foreach (ICommand command in commandsExecuted) 
-                Console.WriteLine($"    {command}");
+                Console.WriteLine($"    {command, 40} | Succeeded: {command.Succeeded}, Undone: {command.Undone}");
         }
         
         public IBarcodeCLI AwaitKeyPress()
